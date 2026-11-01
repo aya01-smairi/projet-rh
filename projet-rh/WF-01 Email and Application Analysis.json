@@ -1,0 +1,2384 @@
+{
+  "name": "WF-01 Email and Application Analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "e91c9eb9-bb87-45cf-8b27-fb588d0edde2",
+      "name": "When Called by Orchestrator",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -224,
+        1296
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  const j = item.json || {};\n  const data = (j.data && typeof j.data === 'object') ? j.data : {};\n  const sourceType = String(j.source_type || '').toLowerCase().trim();\n  const attempt = Number(j.attempt) > 0 ? Number(j.attempt) : 1;\n  let text = '';\n  let docUrl = '';\n  if (sourceType === 'email') {\n    const parts = [];\n    if (data.subject) parts.push('Subject: ' + data.subject);\n    if (data.body) parts.push(String(data.body));\n    const atts = Array.isArray(data.attachments) ? data.attachments : [];\n    for (const a of atts) {\n      if (a && a.text) parts.push('[Attachment ' + (a.filename || '') + ']\\n' + a.text);\n      else if (a && a.url && !docUrl) docUrl = String(a.url);\n    }\n    text = parts.join('\\n\\n');\n  } else if (sourceType === 'cv') {\n    text = String(data.cv_text || '');\n    if (!text && data.cv_url) docUrl = String(data.cv_url);\n  }\n  const missing = [];\n  if (!j.request_id) missing.push('request_id');\n  if (!sourceType) missing.push('source_type');\n  if (Object.keys(data).length === 0) missing.push('data');\n  if (sourceType === 'email' && !data.from) missing.push('data.from');\n  if (sourceType === 'cv' && !data.job_offer) missing.push('data.job_offer');\n  const validType = sourceType === 'email' || sourceType === 'cv';\n  if (validType && !text && !docUrl) missing.push(sourceType === 'cv' ? 'data.cv_text or data.cv_url' : 'data.body');\n  const valid = validType && missing.length === 0;\n  let error = null;\n  if (sourceType && !validType) error = 'invalid_source_type';\n  else if (missing.length) error = 'missing_input';\n  return {\n    json: {\n      request_id: j.request_id || '',\n      user_id: j.user_id || '',\n      action: j.action || '',\n      source_type: sourceType,\n      data: data,\n      attempt: attempt,\n      hr_feedback: j.hr_feedback || '',\n      text: text,\n      doc_url: docUrl,\n      needs_fetch: valid && !!docUrl,\n      valid: valid,\n      error: error,\n      missing_fields: missing,\n    },\n  };\n});"
+      },
+      "id": "aec59057-8b8c-40d7-81a2-ad7ddf79f510",
+      "name": "Normalize Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "needs-fetch",
+              "leftValue": "={{ $json.needs_fetch }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9d0b863e-1ef2-4c84-951e-25bb567d2d70",
+      "name": "Needs Document Fetch?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.doc_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "8b8001bb-5371-4a7b-96e9-96a806979428",
+      "name": "Fetch Document",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        736,
+        1520
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {
+          "joinPages": true
+        }
+      },
+      "id": "c563dd71-4005-46f6-bb05-6c50f394549e",
+      "name": "Extract PDF Text",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.2,
+      "position": [
+        960,
+        1520
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dtr-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.request_id }}"
+            },
+            {
+              "id": "dtr-2",
+              "name": "user_id",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.user_id }}"
+            },
+            {
+              "id": "dtr-3",
+              "name": "action",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.action }}"
+            },
+            {
+              "id": "dtr-4",
+              "name": "source_type",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.source_type }}"
+            },
+            {
+              "id": "dtr-5",
+              "name": "data",
+              "type": "object",
+              "value": "={{ $('Normalize Input').last().json.data }}"
+            },
+            {
+              "id": "dtr-6",
+              "name": "attempt",
+              "type": "number",
+              "value": "={{ $('Normalize Input').last().json.attempt }}"
+            },
+            {
+              "id": "dtr-7",
+              "name": "hr_feedback",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.hr_feedback }}"
+            },
+            {
+              "id": "dtr-8",
+              "name": "text",
+              "type": "string",
+              "value": "={{ [$('Normalize Input').last().json.text, $('Normalize Input').last().json.needs_fetch ? ($json.text || '') : ''].filter(t => t && String(t).trim()).join('\\n\\n') }}"
+            },
+            {
+              "id": "dtr-9",
+              "name": "valid",
+              "type": "boolean",
+              "value": "={{ $('Normalize Input').last().json.valid }}"
+            },
+            {
+              "id": "dtr-10",
+              "name": "needs_fetch",
+              "type": "boolean",
+              "value": "={{ $('Normalize Input').last().json.needs_fetch }}"
+            },
+            {
+              "id": "dtr-11",
+              "name": "error",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.error || '' }}"
+            },
+            {
+              "id": "dtr-12",
+              "name": "missing_fields",
+              "type": "array",
+              "value": "={{ $('Normalize Input').last().json.missing_fields }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a33e1947-7a9e-4450-be2f-a6c8582c13f4",
+      "name": "Document Text Ready",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "r-email-type",
+                    "leftValue": "={{ $json.source_type }}",
+                    "rightValue": "email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  },
+                  {
+                    "id": "r-email-valid",
+                    "leftValue": "={{ $json.valid }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  },
+                  {
+                    "id": "r-email-text",
+                    "leftValue": "={{ $json.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "email"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "r-cv-type",
+                    "leftValue": "={{ $json.source_type }}",
+                    "rightValue": "cv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  },
+                  {
+                    "id": "r-cv-valid",
+                    "leftValue": "={{ $json.valid }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  },
+                  {
+                    "id": "r-cv-text",
+                    "leftValue": "={{ $json.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "cv"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "invalid"
+        }
+      },
+      "id": "1839e9f3-087b-4152-b708-1edaf3b71672",
+      "name": "Route by Source Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1408,
+        1584
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  const j = item.json;\n  const d = j.data || {};\n  const text = String(j.text || '');\n  const lower = text.toLowerCase();\n  const reasons = [];\n  const urls = text.match(/https?:\\/\\/[^\\s)\"'<>]+/gi) || [];\n  const shorteners = ['bit.ly', 'tinyurl.com', 't.co', 'goo.gl', 'ow.ly', 'is.gd', 'buff.ly', 'rb.gy', 'cutt.ly', 'shorturl.at'];\n  for (const u of urls) {\n    const host = (u.split('/')[2] || '').toLowerCase();\n    if (shorteners.some(s => host === s || host.endsWith('.' + s))) reasons.push('Shortened URL: ' + host);\n    if (/^\\d{1,3}(\\.\\d{1,3}){3}(:\\d+)?$/.test(host)) reasons.push('IP-based URL: ' + host);\n  }\n  const risky = ['.exe', '.js', '.scr', '.zip', '.rar', '.7z', '.bat', '.cmd', '.vbs', '.jar', '.msi', '.iso', '.docm', '.xlsm'];\n  const atts = Array.isArray(d.attachments) ? d.attachments : [];\n  for (const a of atts) {\n    const fn = String((a && a.filename) || '').toLowerCase();\n    if (risky.some(e => fn.endsWith(e))) reasons.push('Risky attachment type: ' + fn);\n  }\n  const from = String(d.from || '');\n  const angle = from.match(/<([^>]+)>/);\n  const addr = (angle ? angle[1] : from).trim().toLowerCase();\n  const domain = addr.split('@')[1] || '';\n  if (angle) {\n    const displayName = from.slice(0, from.indexOf('<'));\n    const nameEmail = displayName.match(/[\\w.+-]+@([\\w-]+\\.[\\w.-]+)/);\n    if (nameEmail && nameEmail[1].toLowerCase() !== domain) reasons.push('Display name shows a different domain (' + nameEmail[1] + ') than the sender (' + domain + ')');\n  }\n  const replyTo = String(d.reply_to || '').toLowerCase();\n  if (replyTo && domain && replyTo.indexOf('@' + domain) === -1) reasons.push('Reply-To domain differs from sender domain');\n  const keywords = ['verify your account', 'confirm your password', 'your password', 'login immediately', 'account suspended', 'urgent action required', 'wire transfer', 'gift card', 'bank details', 'click here to confirm', 'mot de passe', 'virement urgent', 'verifiez votre compte', 'compte suspendu'];\n  for (const k of keywords) { if (lower.indexOf(k) !== -1) reasons.push('Phishing keyword: \"' + k + '\"'); }\n  return { json: Object.assign({}, j, { security_checks: { is_suspicious: reasons.length > 0, reasons: reasons, sender_address: addr, sender_domain: domain, urls_found: urls.length } }) };\n});"
+      },
+      "id": "ab51bb17-1129-47d3-8cc6-64d595316674",
+      "name": "Security Checks",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        816,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an HR email analyst. Analyze the email below.\n- summary: 2-3 sentences.\n- category: one of recruitment, leave, payroll, complaint, information, other.\n- importance: one of low, medium, high, urgent.\n- security: flag phishing, credential requests, suspicious links or attachments, and explain why.\n- suggested_reply: a professional, courteous reply in the same language as the email. It is only a PROPOSAL for HR review. Never promise hiring, leave approval, pay changes or any other HR decision.\n\nFrom: {{ $json.data.from }}\nTo: {{ $json.data.to }}\nSubject: {{ $json.data.subject }}\nAutomated security pre-check: {{ JSON.stringify($json.security_checks) }}\nHR feedback from a previous review (apply it if present): {{ $json.hr_feedback || 'none' }}\n\nEmail content:\n{{ $json.text }}",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "id": "d322d83d-d87e-4d7d-be53-0cfbf1e8af68",
+      "name": "Analyze Email",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1040,
+        416
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "9727835c-a45a-44ac-a9c8-188c6b152a7c",
+      "name": "Email Analysis Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1056,
+        640
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "HjazXuD0lDWNzrtC",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\"summary\":\"Short summary of the email\",\"category\":\"recruitment\",\"importance\":\"medium\",\"security\":{\"is_suspicious\":false,\"reasons\":[\"reason\"]},\"suggested_reply\":{\"subject\":\"Re: subject\",\"body\":\"Reply text\"}}"
+      },
+      "id": "9b3d6995-9f06-40b5-9a6a-659bf8d1487c",
+      "name": "Email Analysis Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1184,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const ctx = $('Security Checks').item.json;\nconst out = $input.item.json.output;\nconst base = { request_id: ctx.request_id, user_id: ctx.user_id, action: ctx.action, source_type: ctx.source_type, attempt: ctx.attempt, hr_feedback: ctx.hr_feedback };\nif (!out || typeof out !== 'object' || !out.suggested_reply) {\n  const err = $input.item.json.error;\n  return { json: Object.assign({}, base, { analysis_failed: true, analysis_error: String((err && err.message) || err || 'LLM output missing or not parseable'), analysis: {}, proposal: {} }) };\n}\nconst categories = ['recruitment', 'leave', 'payroll', 'complaint', 'information', 'other'];\nconst levels = ['low', 'medium', 'high', 'urgent'];\nconst category = categories.indexOf(String(out.category || '').toLowerCase()) !== -1 ? String(out.category).toLowerCase() : 'other';\nconst importance = levels.indexOf(String(out.importance || '').toLowerCase()) !== -1 ? String(out.importance).toLowerCase() : 'medium';\nconst sec = ctx.security_checks || { reasons: [] };\nconst llmSec = out.security || {};\nconst reasons = Array.from(new Set([].concat(sec.reasons || [], llmSec.reasons || [])));\nconst reply = out.suggested_reply || {};\nreturn { json: Object.assign({}, base, {\n  analysis_failed: false,\n  analysis: {\n    type: 'email',\n    summary: out.summary || '',\n    category: category,\n    importance: importance,\n    security: { is_suspicious: !!sec.is_suspicious || !!llmSec.is_suspicious, reasons: reasons, sender_domain: sec.sender_domain || '' },\n    original: { from: ctx.data.from || '', subject: ctx.data.subject || '' },\n  },\n  proposal: { to: sec.sender_address || '', subject: reply.subject || ('Re: ' + (ctx.data.subject || '')), body: reply.body || '' },\n}) };"
+      },
+      "id": "fe9aacf9-3c3b-42ce-a757-3a71394b74c0",
+      "name": "Build Email Proposal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1392,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "analysis-ok",
+              "leftValue": "={{ $json.analysis_failed }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "159b16ec-7b41-401b-a6e3-42d1d6699e6c",
+      "name": "Analysis Succeeded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1664,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "vp-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $json.request_id }}"
+            },
+            {
+              "id": "vp-2",
+              "name": "user_id",
+              "type": "string",
+              "value": "={{ $json.user_id }}"
+            },
+            {
+              "id": "vp-3",
+              "name": "source_type",
+              "type": "string",
+              "value": "={{ $json.source_type }}"
+            },
+            {
+              "id": "vp-4",
+              "name": "attempt",
+              "type": "number",
+              "value": "={{ $json.attempt }}"
+            },
+            {
+              "id": "vp-5",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "vp-6",
+              "name": "validation_type",
+              "type": "string",
+              "value": "communication"
+            },
+            {
+              "id": "vp-7",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $json.analysis }}"
+            },
+            {
+              "id": "vp-8",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $json.proposal }}"
+            },
+            {
+              "id": "vp-9",
+              "name": "resume_url",
+              "type": "string",
+              "value": "={{ $execution.resumeUrl }}"
+            },
+            {
+              "id": "vp-10",
+              "name": "allowed_decisions",
+              "type": "array",
+              "value": "={{ ['APPROVED', 'MODIFIED', 'REJECTED'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a8b4ea2b-f63e-46f5-821a-eee9799b1669",
+      "name": "Validation Payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1952,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "sendTo": "hr@example.com",
+        "subject": "=[Validation RH] {{ $json.source_type === \"cv\" ? \"Candidature\" : \"Email\" }} - {{ $json.proposal.subject }}",
+        "message": "=<h3>Demande {{ $json.request_id }} ({{ $json.source_type }}) - tentative {{ $json.attempt }}</h3>{{ $json.analysis.type === \"email\" ? \"<p><b>Resume :</b> \" + ($json.analysis.summary || \"\") + \"</p><p><b>Categorie :</b> \" + $json.analysis.category + \" | <b>Importance :</b> \" + $json.analysis.importance + \"</p><p><b>Suspect :</b> \" + ($json.analysis.security.is_suspicious ? \"OUI - \" + $json.analysis.security.reasons.join(\"; \") : \"non\") + \"</p>\" : \"<p><b>Candidat :</b> \" + ($json.analysis.candidate.full_name || \"\") + \" (\" + ($json.analysis.candidate.email || \"\") + \")</p><p><b>Poste :</b> \" + $json.analysis.job_title + \"</p><p><b>Competences correspondantes :</b> \" + $json.analysis.match.skill_match_pct + \"% - manquantes : \" + $json.analysis.match.missing_skills.join(\", \") + \"</p><p><b>Experience :</b> \" + $json.analysis.match.years_experience + \" ans (minimum \" + $json.analysis.match.min_years_experience + \")</p>\" }}<hr><p><b>Reponse proposee a :</b> {{ $json.proposal.to }}</p><p><b>Objet :</b> {{ $json.proposal.subject }}</p><pre style=\"white-space:pre-wrap\">{{ $json.proposal.body }}</pre><p>Cliquez sur le bouton pour APPROUVER, MODIFIER ou REFUSER.</p>",
+        "responseType": "customForm",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Decision",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "APPROVED"
+                  },
+                  {
+                    "option": "MODIFIED"
+                  },
+                  {
+                    "option": "REJECTED"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Commentaire",
+              "fieldType": "textarea",
+              "placeholder": "Obligatoire si REJECTED : ce qui doit changer"
+            },
+            {
+              "fieldLabel": "Nouvel objet",
+              "placeholder": "Seulement si MODIFIED"
+            },
+            {
+              "fieldLabel": "Nouveau message",
+              "fieldType": "textarea",
+              "placeholder": "Seulement si MODIFIED"
+            },
+            {
+              "fieldLabel": "Validateur"
+            }
+          ]
+        },
+        "options": {
+          "messageButtonLabel": "Repondre",
+          "responseFormTitle": "Validation RH",
+          "responseFormButtonLabel": "Envoyer",
+          "limitWaitTime": {
+            "values": {
+              "resumeAmount": 7,
+              "resumeUnit": "days"
+            }
+          },
+          "appendAttribution": false
+        }
+      },
+      "id": "f745e9e0-16e2-4666-b97a-1f69b46eb3b3",
+      "name": "Request HR Validation",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2176,
+        352
+      ],
+      "webhookId": "4e5758c0-955b-44fd-a41b-d0a3f96e0ab9",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VMuA98tBcLkJGEad",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "hr-1",
+              "name": "body",
+              "type": "object",
+              "value": "={{ (() => { const d = $json.data || {}; const subj = String(d[\"Nouvel objet\"] || \"\").trim(); const msg = String(d[\"Nouveau message\"] || \"\").trim(); const mp = {}; if (subj) mp.subject = subj; if (msg) mp.body = msg; return { decision: String(d[\"Decision\"] || \"\"), comment: String(d[\"Commentaire\"] || \"\"), reviewer: String(d[\"Validateur\"] || \"\"), modified_proposal: mp }; })() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "72d47d78-a6eb-4cf8-91a0-4ef0e258870c",
+      "name": "Read HR Decision",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2512,
+        688
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d-app",
+                    "leftValue": "={{ String(($json.body && $json.body.decision) || '').trim().toUpperCase() }}",
+                    "rightValue": "APPROVED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "APPROVED"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d-mod",
+                    "leftValue": "={{ String(($json.body && $json.body.decision) || '').trim().toUpperCase() }}",
+                    "rightValue": "MODIFIED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "MODIFIED"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d-rej",
+                    "leftValue": "={{ String(($json.body && $json.body.decision) || '').trim().toUpperCase() }}",
+                    "rightValue": "REJECTED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "REJECTED"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "unknown"
+        }
+      },
+      "id": "04c3b298-0e11-4edc-b89a-2d74c7444acb",
+      "name": "Route HR Decision",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2736,
+        656
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ap-1",
+              "name": "final_proposal",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.proposal }}"
+            },
+            {
+              "id": "ap-2",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ { decision: 'APPROVED', comment: ($json.body && $json.body.comment) || '', reviewer: ($json.body && $json.body.reviewer) || '' } }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "32e08283-689c-47fe-9287-ed23a6d3a3e0",
+      "name": "Approved Proposal",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2976,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fp-1",
+              "name": "final_proposal",
+              "type": "object",
+              "value": "={{ $json.final_proposal }}"
+            },
+            {
+              "id": "fp-2",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ $json.hr_decision }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4a4d28d7-0ec3-451d-8291-bc86933451eb",
+      "name": "Final Proposal",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3264,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.final_proposal.to }}",
+        "subject": "={{ $json.final_proposal.subject }}",
+        "emailType": "text",
+        "message": "={{ $json.final_proposal.body }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "5af4f0bd-bb6c-411d-9f0b-90486c45dfdf",
+      "name": "Send Reply Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        3488,
+        336
+      ],
+      "webhookId": "16d8b240-288c-49d6-a0ee-af3c7a64699e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VMuA98tBcLkJGEad",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "is-cv",
+              "leftValue": "={{ $('Validation Payload').last().json.source_type }}",
+              "rightValue": "cv",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "14488cd2-c5a9-4b18-a52f-5892b0a37832",
+      "name": "Is CV Application?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3792,
+        656
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "GkNbaYLxrZRUugYz",
+          "cachedResultName": "candidate_applications"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "request_id": "={{ $(\"Validation Payload\").last().json.request_id }}",
+            "candidate_name": "={{ $(\"Validation Payload\").last().json.analysis.candidate.full_name || \"\" }}",
+            "candidate_email": "={{ $(\"Final Proposal\").last().json.final_proposal.to }}",
+            "job_title": "={{ $(\"Validation Payload\").last().json.analysis.job_title }}",
+            "skill_match_pct": "={{ $(\"Validation Payload\").last().json.analysis.match.skill_match_pct }}",
+            "experience_ok": "={{ $(\"Validation Payload\").last().json.analysis.match.experience_ok }}",
+            "status": "acknowledged",
+            "hr_decision": "={{ $(\"Final Proposal\").last().json.hr_decision.decision }}",
+            "updated_at": "={{ $now.toISO() }}"
+          },
+          "schema": [
+            {
+              "id": "request_id",
+              "displayName": "request_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "candidate_name",
+              "displayName": "candidate_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "candidate_email",
+              "displayName": "candidate_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "job_title",
+              "displayName": "job_title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "skill_match_pct",
+              "displayName": "skill_match_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "experience_ok",
+              "displayName": "experience_ok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hr_decision",
+              "displayName": "hr_decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe4830a1-8ce5-4fcf-947e-7aa68bf0a8eb",
+      "name": "Update Application Status",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4016,
+        576
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Validation Payload').last().json.request_id }}"
+            },
+            {
+              "id": "bc-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "bc-3",
+              "name": "status",
+              "type": "string",
+              "value": "={{ $json.error ? 'execution_failed' : 'completed' }}"
+            },
+            {
+              "id": "bc-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.analysis }}"
+            },
+            {
+              "id": "bc-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $('Final Proposal').last().json.final_proposal }}"
+            },
+            {
+              "id": "bc-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ $('Final Proposal').last().json.hr_decision }}"
+            },
+            {
+              "id": "bc-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ ($('Validation Payload').last().json.source_type === 'cv' && !$json.error) ? ['email_sent', 'application_status_updated'] : ['email_sent'] }}"
+            },
+            {
+              "id": "bc-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ $json.error ? [{ stage: 'Update Application Status', message: ($json.error.message || String($json.error)) }] : [] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "916c0b29-93ba-4357-b692-0deb8cb93749",
+      "name": "Build Completed Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4240,
+        656
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fr-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $json.request_id }}"
+            },
+            {
+              "id": "fr-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "fr-3",
+              "name": "status",
+              "type": "string",
+              "value": "={{ $json.status }}"
+            },
+            {
+              "id": "fr-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $json.analysis || {} }}"
+            },
+            {
+              "id": "fr-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $json.proposal || {} }}"
+            },
+            {
+              "id": "fr-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ $json.hr_decision || {} }}"
+            },
+            {
+              "id": "fr-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ $json.executed_actions || [] }}"
+            },
+            {
+              "id": "fr-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ $json.errors || [] }}"
+            },
+            {
+              "id": "fr-9",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f3a419c3-2d05-4da7-904d-cc767f7a319c",
+      "name": "Final Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4320,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "yxj13r6AsdffWc4W",
+          "cachedResultName": "wf01_history"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "request_id": "={{ $json.request_id }}",
+            "source_type": "={{ $json.analysis.type || \"\" }}",
+            "status": "={{ $json.status }}",
+            "hr_decision": "={{ $json.hr_decision.decision || \"\" }}",
+            "summary": "={{ $json.analysis.summary || ($json.analysis.candidate ? $json.analysis.candidate.full_name + \" - \" + $json.analysis.job_title : \"\") }}",
+            "proposal_to": "={{ $json.proposal.to || \"\" }}",
+            "proposal_subject": "={{ $json.proposal.subject || \"\" }}",
+            "errors": "={{ JSON.stringify($json.errors || []) }}",
+            "result_json": "={{ JSON.stringify($json) }}",
+            "processed_at": "={{ $json.timestamp }}"
+          },
+          "schema": [
+            {
+              "id": "request_id",
+              "displayName": "request_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "source_type",
+              "displayName": "source_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hr_decision",
+              "displayName": "hr_decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "summary",
+              "displayName": "summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "proposal_to",
+              "displayName": "proposal_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "proposal_subject",
+              "displayName": "proposal_subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "errors",
+              "displayName": "errors",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "result_json",
+              "displayName": "result_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "processed_at",
+              "displayName": "processed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bae7f563-e99f-4f50-a03f-00c61637ea19",
+      "name": "Save to History",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4544,
+        880
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "rr-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Final Result').last().json.request_id }}"
+            },
+            {
+              "id": "rr-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "rr-3",
+              "name": "status",
+              "type": "string",
+              "value": "={{ $('Final Result').last().json.status }}"
+            },
+            {
+              "id": "rr-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $('Final Result').last().json.analysis }}"
+            },
+            {
+              "id": "rr-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $('Final Result').last().json.proposal }}"
+            },
+            {
+              "id": "rr-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ $('Final Result').last().json.hr_decision }}"
+            },
+            {
+              "id": "rr-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ $('Final Result').last().json.executed_actions }}"
+            },
+            {
+              "id": "rr-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ $('Final Result').last().json.errors }}"
+            },
+            {
+              "id": "rr-9",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $('Final Result').last().json.timestamp }}"
+            },
+            {
+              "id": "rr-10",
+              "name": "status_reported",
+              "type": "boolean",
+              "value": "={{ !$json.error }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c0e8a591-9ad9-4996-9435-051f3a265bfe",
+      "name": "Return Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4768,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ef-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Validation Payload').last().json.request_id }}"
+            },
+            {
+              "id": "ef-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "ef-3",
+              "name": "status",
+              "type": "string",
+              "value": "execution_failed"
+            },
+            {
+              "id": "ef-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.analysis }}"
+            },
+            {
+              "id": "ef-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.proposal }}"
+            },
+            {
+              "id": "ef-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ $prevNode.name === 'Send Reply Email' ? $('Final Proposal').last().json.hr_decision : {} }}"
+            },
+            {
+              "id": "ef-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ [] }}"
+            },
+            {
+              "id": "ef-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ [{ stage: $prevNode.name, message: ($json.error && $json.error.message) || $json.error || 'unknown_error' }] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0b64bc17-a604-450b-a5eb-b2dd210ddf8e",
+      "name": "Execution Failed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3888,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "am-1",
+              "name": "final_proposal",
+              "type": "object",
+              "value": "={{ Object.assign({}, $('Validation Payload').last().json.proposal, ($json.body && $json.body.modified_proposal) || {}) }}"
+            },
+            {
+              "id": "am-2",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ { decision: 'MODIFIED', comment: ($json.body && $json.body.comment) || '', reviewer: ($json.body && $json.body.reviewer) || '' } }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "59aa6cf1-f020-4c4b-bdde-bf607be4f7e7",
+      "name": "Apply HR Modifications",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2976,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "retry-lt-3",
+              "leftValue": "={{ $('Validation Payload').last().json.attempt }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4b7c8b09-3193-4b1c-a7ad-8dbe6dac799c",
+      "name": "Retry Allowed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2976,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "pr-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.request_id }}"
+            },
+            {
+              "id": "pr-2",
+              "name": "user_id",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.user_id }}"
+            },
+            {
+              "id": "pr-3",
+              "name": "action",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.action }}"
+            },
+            {
+              "id": "pr-4",
+              "name": "source_type",
+              "type": "string",
+              "value": "={{ $('Normalize Input').last().json.source_type }}"
+            },
+            {
+              "id": "pr-5",
+              "name": "data",
+              "type": "object",
+              "value": "={{ $('Normalize Input').last().json.data }}"
+            },
+            {
+              "id": "pr-6",
+              "name": "attempt",
+              "type": "number",
+              "value": "={{ $('Validation Payload').last().json.attempt + 1 }}"
+            },
+            {
+              "id": "pr-7",
+              "name": "hr_feedback",
+              "type": "string",
+              "value": "={{ ($json.body && $json.body.comment) || 'Rejected by HR without comment. Produce a better proposal.' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c2c7c925-a18f-4d12-9dec-11e16f795850",
+      "name": "Prepare Re-analysis",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3360,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "rf-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Validation Payload').last().json.request_id }}"
+            },
+            {
+              "id": "rf-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "rf-3",
+              "name": "status",
+              "type": "string",
+              "value": "rejected_final"
+            },
+            {
+              "id": "rf-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.analysis }}"
+            },
+            {
+              "id": "rf-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.proposal }}"
+            },
+            {
+              "id": "rf-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ { decision: 'REJECTED', comment: ($json.body && $json.body.comment) || '', reviewer: ($json.body && $json.body.reviewer) || '', attempts: $('Validation Payload').last().json.attempt } }}"
+            },
+            {
+              "id": "rf-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ [] }}"
+            },
+            {
+              "id": "rf-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ [] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f444c14c-e944-4137-bb02-2505a0da218f",
+      "name": "Rejected Final Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3360,
+        704
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $('Validation Payload').last().json.request_id }}"
+            },
+            {
+              "id": "id-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "id-3",
+              "name": "status",
+              "type": "string",
+              "value": "error"
+            },
+            {
+              "id": "id-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.analysis }}"
+            },
+            {
+              "id": "id-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ $('Validation Payload').last().json.proposal }}"
+            },
+            {
+              "id": "id-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ { decision: ($json.body && $json.body.decision) || null } }}"
+            },
+            {
+              "id": "id-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ [] }}"
+            },
+            {
+              "id": "id-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ [{ stage: 'hr_decision', message: 'Missing or unknown HR decision (or 7-day validation timeout). Nothing was sent.' }] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fc0570c9-688a-4dd7-995b-dadfee62360a",
+      "name": "Invalid Decision",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3888,
+        848
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "af-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $json.request_id }}"
+            },
+            {
+              "id": "af-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "af-3",
+              "name": "status",
+              "type": "string",
+              "value": "analysis_failed"
+            },
+            {
+              "id": "af-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ {} }}"
+            },
+            {
+              "id": "af-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ {} }}"
+            },
+            {
+              "id": "af-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ {} }}"
+            },
+            {
+              "id": "af-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ [] }}"
+            },
+            {
+              "id": "af-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ [{ stage: 'analysis', message: $json.analysis_error }] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96464889-f241-47c2-9c1b-d63e0edd7dff",
+      "name": "Analysis Failed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3888,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an HR recruitment assistant. Extract structured candidate information from the CV below. Use only information present in the CV; leave unknown fields empty. years_experience is the total years of professional experience as a number. List skills as short lowercase keywords.\n\nThen draft suggested_reply: an acknowledgement email to the candidate confirming receipt of the application for the job below and explaining that HR will review it and come back with next steps. It is a PROPOSAL for HR review. Never reject the candidate and never promise an interview or a job.\n\nJob offer: {{ JSON.stringify($json.data.job_offer) }}\nHR feedback from a previous review (apply it if present): {{ $json.hr_feedback || 'none' }}\n\nCV text:\n{{ $json.text }}",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "id": "e5c99a54-f0ae-40ae-9de6-34216d2ef6e6",
+      "name": "Analyze CV",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1008,
+        1600
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "id": "55c01bba-5ac8-48dc-a08c-8abcb9842cf9",
+      "name": "CV Analysis Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        1824
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "HjazXuD0lDWNzrtC",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\"candidate\":{\"full_name\":\"Full Name\",\"email\":\"name@domain.test\",\"phone\":\"+000000000\",\"education\":[{\"degree\":\"MSc\",\"institution\":\"University\",\"year\":\"2020\"}],\"skills\":[\"python\",\"sql\"],\"years_experience\":3,\"experience\":[{\"role\":\"Data Analyst\",\"company\":\"Company\",\"years\":2}],\"languages\":[\"English\"]},\"suggested_reply\":{\"subject\":\"Your application\",\"body\":\"Reply text\"}}"
+      },
+      "id": "0accd603-6ddc-4dfa-9f27-be49d260aea8",
+      "name": "CV Analysis Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1152,
+        1824
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const ctx = $('Document Text Ready').item.json;\nconst out = $input.item.json.output;\nconst base = { request_id: ctx.request_id, user_id: ctx.user_id, action: ctx.action, source_type: ctx.source_type, attempt: ctx.attempt, hr_feedback: ctx.hr_feedback };\nif (!out || typeof out !== 'object' || !out.candidate) {\n  const err = $input.item.json.error;\n  return { json: Object.assign({}, base, { analysis_failed: true, analysis_error: String((err && err.message) || err || 'LLM output missing or not parseable'), analysis: {}, proposal: {} }) };\n}\nconst c = out.candidate || {};\nconst job = (ctx.data && ctx.data.job_offer) || {};\nconst norm = s => String(s || '').toLowerCase().trim();\nconst candSkills = (Array.isArray(c.skills) ? c.skills : []).map(norm).filter(Boolean);\nconst required = (Array.isArray(job.required_skills) ? job.required_skills : []).map(norm).filter(Boolean);\nconst matched = required.filter(r => candSkills.some(s => s === r || (s.length >= 3 && r.length >= 3 && (s.indexOf(r) !== -1 || r.indexOf(s) !== -1))));\nconst missing = required.filter(r => matched.indexOf(r) === -1);\nconst pct = required.length ? Math.round(matched.length / required.length * 100) : null;\nconst years = Number(c.years_experience) || 0;\nconst minYears = Number(job.min_years_experience) || 0;\nconst reply = out.suggested_reply || {};\nreturn { json: Object.assign({}, base, {\n  analysis_failed: false,\n  analysis: {\n    type: 'cv',\n    candidate: c,\n    job_title: job.title || '',\n    match: { matched_skills: matched, missing_skills: missing, skill_match_pct: pct, years_experience: years, min_years_experience: minYears, experience_ok: years >= minYears },\n  },\n  proposal: { to: c.email || ctx.data.candidate_email || '', subject: reply.subject || ('Your application - ' + (job.title || '')), body: reply.body || '' },\n}) };"
+      },
+      "id": "daf726e8-0fd3-4ff3-bfe3-88b1b6b55d49",
+      "name": "Match Job Offer & Build Proposal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "beo-1",
+              "name": "request_id",
+              "type": "string",
+              "value": "={{ $json.request_id }}"
+            },
+            {
+              "id": "beo-2",
+              "name": "module",
+              "type": "string",
+              "value": "WF-01"
+            },
+            {
+              "id": "beo-3",
+              "name": "status",
+              "type": "string",
+              "value": "error"
+            },
+            {
+              "id": "beo-4",
+              "name": "analysis",
+              "type": "object",
+              "value": "={{ {} }}"
+            },
+            {
+              "id": "beo-5",
+              "name": "proposal",
+              "type": "object",
+              "value": "={{ {} }}"
+            },
+            {
+              "id": "beo-6",
+              "name": "hr_decision",
+              "type": "object",
+              "value": "={{ {} }}"
+            },
+            {
+              "id": "beo-7",
+              "name": "executed_actions",
+              "type": "array",
+              "value": "={{ [] }}"
+            },
+            {
+              "id": "beo-8",
+              "name": "errors",
+              "type": "array",
+              "value": "={{ [{ stage: 'input', error: $json.error || ($json.needs_fetch ? 'document_text_unavailable' : 'missing_input'), missing_fields: $json.missing_fields || [] }] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6dab0f2e-7f90-4248-9010-e95e252277c1",
+      "name": "Build Error Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3888,
+        1312
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Emails"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        48,
+        1392
+      ],
+      "id": "ef36ac6d-c0e4-4b6f-a3d1-831e68002021",
+      "name": "Get many rows",
+      "credentials": {
+        "supabaseApi": {
+          "id": "LCy17Tb2AI3VTzu3",
+          "name": "Supabase account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Called by Orchestrator": [
+      {
+        "json": [
+          {
+            "request_id": "REQ-002",
+            "source_type": "email",
+            "data": {
+              "from": "candidat@example.com",
+              "subject": "Test",
+              "body": "Bonjour, je souhaite postuler."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "connections": {
+    "When Called by Orchestrator": {
+      "main": [
+        [
+          {
+            "node": "Normalize Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Input": {
+      "main": [
+        [
+          {
+            "node": "Needs Document Fetch?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Needs Document Fetch?": {
+      "main": [
+        [
+          {
+            "node": "Fetch Document",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Document Text Ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Document": {
+      "main": [
+        [
+          {
+            "node": "Extract PDF Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PDF Text": {
+      "main": [
+        [
+          {
+            "node": "Document Text Ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Document Text Ready": {
+      "main": [
+        [
+          {
+            "node": "Route by Source Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Source Type": {
+      "main": [
+        [
+          {
+            "node": "Security Checks",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Analyze CV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Error Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Security Checks": {
+      "main": [
+        [
+          {
+            "node": "Analyze Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Email": {
+      "main": [
+        [
+          {
+            "node": "Build Email Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Analysis Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Analyze Email",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Analysis Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Analyze Email",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Email Proposal": {
+      "main": [
+        [
+          {
+            "node": "Analysis Succeeded?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analysis Succeeded?": {
+      "main": [
+        [
+          {
+            "node": "Validation Payload",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Analysis Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation Payload": {
+      "main": [
+        [
+          {
+            "node": "Request HR Validation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request HR Validation": {
+      "main": [
+        [
+          {
+            "node": "Read HR Decision",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Read HR Decision": {
+      "main": [
+        [
+          {
+            "node": "Route HR Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route HR Decision": {
+      "main": [
+        [
+          {
+            "node": "Approved Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Apply HR Modifications",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retry Allowed?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Invalid Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approved Proposal": {
+      "main": [
+        [
+          {
+            "node": "Final Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Proposal": {
+      "main": [
+        [
+          {
+            "node": "Send Reply Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Reply Email": {
+      "main": [
+        [
+          {
+            "node": "Is CV Application?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execution Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is CV Application?": {
+      "main": [
+        [
+          {
+            "node": "Update Application Status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Completed Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Application Status": {
+      "main": [
+        [
+          {
+            "node": "Build Completed Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Completed Output": {
+      "main": [
+        [
+          {
+            "node": "Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Result": {
+      "main": [
+        [
+          {
+            "node": "Save to History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to History": {
+      "main": [
+        [
+          {
+            "node": "Return Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Failed": {
+      "main": [
+        [
+          {
+            "node": "Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply HR Modifications": {
+      "main": [
+        [
+          {
+            "node": "Final Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retry Allowed?": {
+      "main": [
+        [
+          {
+            "node": "Prepare Re-analysis",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Rejected Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Re-analysis": {
+      "main": [
+        [
+          {
+            "node": "Normalize Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rejected Final Output": {
+      "main": [
+        [
+          {
+            "node": "Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Invalid Decision": {
+      "main": [
+        [
+          {
+            "node": "Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analysis Failed": {
+      "main": [
+        [
+          {
+            "node": "Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze CV": {
+      "main": [
+        [
+          {
+            "node": "Match Job Offer & Build Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CV Analysis Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Analyze CV",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CV Analysis Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Analyze CV",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Match Job Offer & Build Proposal": {
+      "main": [
+        [
+          {
+            "node": "Analysis Succeeded?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Error Output": {
+      "main": [
+        [
+          {
+            "node": "Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "e0977892-53e0-4271-8e5e-99583398877d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4fd35af40aefc8c058b49bc461570f36cbdf69261ae38a234469ae1ce8af1e95"
+  },
+  "nodeGroups": [
+    {
+      "id": "5b525ba7-9a85-49a6-b6df-fec8b75dccd5",
+      "name": "Load request text",
+      "nodeIds": [
+        "aec59057-8b8c-40d7-81a2-ad7ddf79f510",
+        "9d0b863e-1ef2-4c84-951e-25bb567d2d70",
+        "8b8001bb-5371-4a7b-96e9-96a806979428",
+        "c563dd71-4005-46f6-bb05-6c50f394549e",
+        "a33e1947-7a9e-4450-be2f-a6c8582c13f4",
+        "1839e9f3-087b-4152-b708-1edaf3b71672"
+      ],
+      "description": "Validates the request, fetches and reads a PDF when only a link is given, then routes emails and CVs to their analysis"
+    },
+    {
+      "id": "9615843c-c455-4b13-a4c3-fc9a25b44cca",
+      "name": "Analyze email",
+      "nodeIds": [
+        "ab51bb17-1129-47d3-8cc6-64d595316674",
+        "d322d83d-d87e-4d7d-be53-0cfbf1e8af68",
+        "9727835c-a45a-44ac-a9c8-188c6b152a7c",
+        "9b3d6995-9f06-40b5-9a6a-659bf8d1487c",
+        "fe9aacf9-3c3b-42ce-a757-3a71394b74c0"
+      ],
+      "description": "Runs rule-based phishing checks, then summarizes, classifies and scores the email and drafts a reply for HR"
+    },
+    {
+      "id": "4904c844-0487-4249-b390-1b9a3418d04e",
+      "name": "Assess candidate CV",
+      "nodeIds": [
+        "e5c99a54-f0ae-40ae-9de6-34216d2ef6e6",
+        "55c01bba-5ac8-48dc-a08c-8abcb9842cf9",
+        "0accd603-6ddc-4dfa-9f27-be49d260aea8",
+        "daf726e8-0fd3-4ff3-bfe3-88b1b6b55d49"
+      ],
+      "description": "Extracts candidate profile from the CV, scores skills and experience against the job offer, drafts an acknowledgement"
+    },
+    {
+      "id": "13f61d87-f0a4-4518-8b79-a1a22c4672d4",
+      "name": "Submit for HR review",
+      "nodeIds": [
+        "a8b4ea2b-f63e-46f5-821a-eee9799b1669",
+        "f745e9e0-16e2-4666-b97a-1f69b46eb3b3"
+      ],
+      "description": "Emails HR the analysis and proposed reply with a form to approve, edit or reject it, waiting up to 7 days"
+    },
+    {
+      "id": "e5c1c369-e68a-4282-9fe8-62f63d85457c",
+      "name": "Await HR decision",
+      "nodeIds": [
+        "72d47d78-a6eb-4cf8-91a0-4ef0e258870c",
+        "04c3b298-0e11-4edc-b89a-2d74c7444acb"
+      ],
+      "description": "Reads the HR answer: approved and edited replies go out, rejections trigger a new draft up to 3 tries"
+    },
+    {
+      "id": "7f75faf2-d376-4d7b-86f3-9169a8f51faf",
+      "name": "Send approved reply",
+      "nodeIds": [
+        "4a4d28d7-0ec3-451d-8291-bc86933451eb",
+        "5af4f0bd-bb6c-411d-9f0b-90486c45dfdf"
+      ],
+      "description": "Only after HR approval: emails the original or HR-edited reply to the recipient"
+    },
+    {
+      "id": "97010cb3-694b-4c96-9c1a-279f88a45982",
+      "name": "Update application follow-up",
+      "nodeIds": [
+        "14488cd2-c5a9-4b18-a52f-5892b0a37832",
+        "fe4830a1-8ce5-4fcf-947e-7aa68bf0a8eb",
+        "916c0b29-93ba-4357-b692-0deb8cb93749"
+      ],
+      "description": "For CV requests, records the candidate as acknowledged in the applications table, then marks the run complete"
+    },
+    {
+      "id": "ac04ffca-5659-4d22-addb-a53974fef0b7",
+      "name": "Return final result",
+      "nodeIds": [
+        "f3a419c3-2d05-4da7-904d-cc767f7a319c",
+        "bae7f563-e99f-4f50-a03f-00c61637ea19",
+        "c0e8a591-9ad9-4996-9435-051f3a265bfe"
+      ],
+      "description": "Builds the standard JSON result, saves it to the history table and returns it to the orchestrator"
+    }
+  ],
+  "id": "nEt8DrQu2PMnFmOn",
+  "tags": []
+}

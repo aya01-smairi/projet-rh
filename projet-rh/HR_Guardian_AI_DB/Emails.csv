@@ -1,0 +1,312 @@
+﻿email_id,received_at,sender_name,sender_email,recipient,subject,body,attachment,category,target_agent,priority,tone,sentiment,summary,candidate_id,job_offer_id,employee_id,processing_status
+EML-056,2026-10-02 17:22:25,Hamza Sassi,hamza.sassi@mail-exemple.com,rh@entreprise-exemple.com,Relance – ma candidature,"Bonjour, je me permets de relancer concernant ma candidature. Toujours très intéressé(e) par le poste. Merci de votre retour.
+Hamza",,Relance de candidature,Agent suivi,Normale,formel,Positif,Hamza Sassi relance pour connaître l'état de sa candidature (OFF-024).,CAN-065,OFF-024,,Traité
+EML-015,2026-10-06 08:20:28,Amira Mansouri,amira.mansouri@mail-exemple.com,rh@entreprise-exemple.com,Proposition de collaboration,"Bonjour,
+
+Bien que je n'aie pas identifié d'offre correspondant exactement à mon profil, je souhaite vous faire part de ma candidature spontanée en tant que Développeur Backend Java. Compétences : Git, Maven, SQL, Java, Docker, Spring Boot. CV en pièce jointe.
+
+Cordialement,
+Amira Mansouri",CV_amira_mansouri.pdf,Candidature spontanée,Agent tri des CV,Basse,formel,Neutre,"Amira Mansouri envoie une candidature spontanée (profil Développeur Backend Java), CV joint.",CAN-056,,,Traité
+EML-070,2026-10-07 11:56:47,Slim Dubois,slim.dubois@mail-exemple.com,rh@entreprise-exemple.com,Spontanée – profil Ingénieur DevOps,"Bonjour,
+
+Bien que je n'aie pas identifié d'offre correspondant exactement à mon profil, je souhaite vous faire part de ma candidature spontanée en tant que Ingénieur DevOps. Compétences : Terraform, CI/CD, Bash, AWS, Linux, Git, Docker. CV en pièce jointe.
+
+Cordialement,
+Slim Dubois",CV_slim_dubois.pdf,Candidature spontanée,Agent tri des CV,Basse,formel,Positif,"Slim Dubois envoie une candidature spontanée (profil Ingénieur DevOps), CV joint.",CAN-040,,,Traité
+EML-045,2026-10-07 15:18:53,Emna Haddad,emna.haddad@entreprise-exemple.com,rh@entreprise-exemple.com,Question sur le télétravail,"Bonjour,
+
+Je suis en poste depuis 8 mois, puis-je faire du télétravail 3 jours par semaine ?
+
+Merci,
+Emna",,Question télétravail,Agent FAQ RH,Normale,formel,Neutre,Emna Haddad pose une question sur les règles de télétravail.,,,EMP-1888,Traité
+EML-011,2026-10-07 16:31:36,Fournisseur Alpha,compta@fournisseur-alpha.com,rh@entreprise-exemple.com,Re: facture 4452,"Bonjour, veuillez trouver la facture de notre dernière prestation de maintenance serveur.",,Hors sujet / spam,Aucun (filtrer ou transférer),Basse,commercial,Neutre,Message non pertinent de Fournisseur Alpha : Re: facture 4452. Aucune action RH requise.,,,,Filtré (spam)
+EML-049,2026-10-07 18:02:20,Omar Mejri,omar.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Indemnité kilométrique,"Bonjour,
+
+Je souhaite être remboursé de 74 TND pour indemnité kilométrique. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Omar Mejri (EMP-1015)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Omar Mejri demande un remboursement : indemnité kilométrique.,,,EMP-1213,Traité
+EML-018,2026-10-08 12:30:26,Lina Zouari,lina.zouari@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Assistant(e) de direction Confirmé (CDD) (OFF-064),"Madame, Monsieur,
+
+Suite à votre annonce, je souhaite postuler au poste de Assistant(e) de direction Confirmé (CDD). Mes compétences principales : Confidentialité, Archivage, Rédaction, Gestion d'agenda, Pack Office, Organisation de voyages, Anglais, Prise de notes, Communication.
+Mon CV est joint à ce message.
+
+Bien cordialement,
+Lina Zouari",CV_lina_zouari.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Neutre,"Lina Zouari postule à Assistant(e) de direction Confirmé (CDD) (OFF-064) ; CV joint, 5 an(s) d'expérience.",CAN-023,OFF-064,,Traité
+EML-010,2026-10-08 14:37:54,Dorra Dridi,dorra.dridi@entreprise-exemple.com,rh@entreprise-exemple.com,Question horaires,"Bonjour,
+
+Les heures supplémentaires sont-elles payées ou récupérées ?
+
+Merci,
+Dorra",,Question horaires et présence,Agent FAQ RH,Basse,formel,Neutre,Dorra Dridi pose une question sur les horaires et les règles de présence.,,,EMP-1173,Traité
+EML-035,2026-10-08 18:49:41,Promo Soft,promo@offres-douteuses.biz,rh@entreprise-exemple.com,Offre exclusive : licences -70 %,Profitez de nos licences logicielles à prix cassés ! Cliquez ici dès maintenant.,,Hors sujet / spam,Aucun (filtrer ou transférer),Basse,commercial,Neutre,Message non pertinent de Promo Soft : Offre exclusive : licences -70 %. Aucune action RH requise.,,,,Filtré (spam)
+EML-026,2026-10-08 19:12:49,Youssef Baccouche,youssef.baccouche@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Formation externe,"Bonjour,
+
+Je souhaite être remboursé de 107 TND pour formation externe. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Youssef Baccouche (EMP-1020)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Youssef Baccouche demande un remboursement : formation externe.,,,,Traité
+EML-068,2026-10-08 19:41:24,Omar Mejri,omar.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Frais de déménagement pour mutation,"Bonjour,
+
+Je souhaite être remboursé de 377 TND pour frais de déménagement pour mutation. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Omar Mejri (EMP-1015)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Omar Mejri demande un remboursement : frais de déménagement pour mutation.,,,EMP-1213,Traité
+EML-004,2026-10-09 12:01:10,Camille Laabidi,camille.laabidi@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Administrateur Systèmes et Réseaux Confirmé (CDD) (OFF-056),"Madame, Monsieur,
+
+Suite à votre annonce, je souhaite postuler au poste de Administrateur Systèmes et Réseaux Confirmé (CDD). Mes compétences principales : VMware, Sauvegarde, Virtualisation, Active Directory, Supervision, Linux, Réseaux TCP/IP, Windows Server.
+Mon CV est joint à ce message.
+
+Bien cordialement,
+Camille Laabidi",CV_camille_laabidi.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Positif,"Camille Laabidi postule à Administrateur Systèmes et Réseaux Confirmé (CDD) (OFF-056) ; CV joint, 5 an(s) d'expérience.",CAN-007,OFF-056,,Traité
+EML-058,2026-10-09 18:31:43,Fatma Mansouri,fatma.mansouri@entreprise-exemple.com,rh@entreprise-exemple.com,Demande de congé maladie,"Bonjour, je voudrais prendre congé maladie mais je ne sais pas combien de jours j'ai droit. Pouvez-vous m'aider ?
+Fatma",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,Fatma Mansouri () formule : demande de congé maladie.,,,,Traité
+EML-036,2026-10-09 19:59:22,Lucas Sassi,lucas.sassi@mail-exemple.com,rh@entreprise-exemple.com,Demande de report d'entretien,"Bonjour,
+
+Suite à un empêchement, serait-il possible de reporter mon entretien prévu le 02/11/2026 à 16:00 ? Je suis disponible la semaine suivante, de préférence l'après-midi.
+
+Merci,
+Lucas Sassi",,Planification d'entretien,Agent planification,Normale,formel,Neutre,Lucas Sassi demande le report de son entretien.,CAN-045,OFF-051,,Traité
+EML-016,2026-10-10 10:03:42,Aymen Triki,aymen.triki@entreprise-exemple.com,rh@entreprise-exemple.com,Demande : Solde de tout compte,"Bonjour, j'ai besoin de solde de tout compte pour la semaine prochaine, c'est possible ?
+Aymen",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Aymen Triki demande : demande : solde de tout compte.,,,EMP-1339,Traité
+EML-003,2026-10-10 10:30:31,Dorra Dridi,dorra.dridi@entreprise-exemple.com,rh@entreprise-exemple.com,Demande : Attestation pour dossier bancaire ou crédit,"Bonjour, j'ai besoin de attestation pour dossier bancaire ou crédit pour la semaine prochaine, c'est possible ?
+Dorra",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Dorra Dridi demande : demande : attestation pour dossier bancaire ou crédit.,,,EMP-1173,Traité
+EML-040,2026-10-11 11:12:21,Julie Laabidi,julie.laabidi@mail-exemple.com,rh@entreprise-exemple.com,Où en est mon dossier ?,"Bonjour,
+
+J'ai postulé il y a plus de deux semaines (réf. OFF-028) et je n'ai pas eu de retour. Pouvez-vous m'indiquer l'état de ma candidature ?
+
+Cordialement,
+Julie Laabidi",,Relance de candidature,Agent suivi,Normale,formel,Neutre,Julie Laabidi relance pour connaître l'état de sa candidature (OFF-028).,CAN-033,OFF-028,,Traité
+EML-033,2026-10-11 16:06:29,Aymen Naceur,aymen.naceur@mail-exemple.com,rh@entreprise-exemple.com,Disponibilités pour un entretien,"Bonjour,
+
+Pour planifier l'entretien, je suis disponible mardi et jeudi matin ainsi que vendredi après 14h. Dites-moi ce qui vous convient.
+
+Aymen",,Planification d'entretien,Agent planification,Normale,formel,Positif,Aymen Naceur communique ses disponibilités pour l'entretien.,CAN-004,OFF-017,,Traité
+EML-022,2026-10-11 18:31:21,Pierre Khelifi,pierre.khelifi@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Data Scientist Junior (OFF-013),"Madame, Monsieur,
+
+Suite à votre annonce, je souhaite postuler au poste de Data Scientist Junior. Mes compétences principales : SQL, TensorFlow, Scikit-learn, Python, Machine Learning.
+Mon CV est joint à ce message.
+
+Bien cordialement,
+Pierre Khelifi",CV_pierre_khelifi.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Positif,"Pierre Khelifi postule à Data Scientist Junior (OFF-013) ; CV joint, 0 an(s) d'expérience.",CAN-064,OFF-013,,Traité
+EML-041,2026-10-12 11:37:20,Cyrine Ayari,cyrine.ayari@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Ingénieur QA Senior (OFF-059),"Madame, Monsieur,
+
+Suite à votre annonce, je souhaite postuler au poste de Ingénieur QA Senior. Mes compétences principales : Jira, Tests fonctionnels, Plans de test, Postman.
+Mon CV est joint à ce message.
+
+Bien cordialement,
+Cyrine Ayari",CV_cyrine_ayari.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Neutre,"Cyrine Ayari postule à Ingénieur QA Senior (OFF-059) ; CV joint, 6 an(s) d'expérience.",CAN-020,OFF-059,,Traité
+EML-008,2026-10-12 14:07:02,Omar Karray,omar.karray@mail-exemple.com,rh@entreprise-exemple.com,Relance – ma candidature,"Bonjour, je me permets de relancer concernant ma candidature. Toujours très intéressé(e) par le poste. Merci de votre retour.
+Omar",,Relance de candidature,Agent suivi,Normale,formel,Positif,Omar Karray relance pour connaître l'état de sa candidature (OFF-029).,CAN-053,OFF-029,,Traité
+EML-037,2026-10-12 14:21:29,Youssef Lefèvre,youssef.lefevre@mail-exemple.com,rh@entreprise-exemple.com,Confirmation de ma présence,"Bonjour,
+
+Je confirme ma présence à l'entretien du 09/11/2026 à 14:00. Pouvez-vous me préciser s'il se déroule en visio ou sur place ?
+
+Cordialement,
+Youssef Lefèvre",,Planification d'entretien,Agent planification,Normale,formel,Positif,Youssef Lefèvre confirme sa présence et demande le format de l'entretien.,CAN-026,OFF-020,,Traité
+EML-038,2026-10-13 07:57:14,Cyrine Haddad,cyrine.haddad@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Développeur Backend Java Confirmé (OFF-006),"Madame, Monsieur,
+
+Suite à votre annonce, je souhaite postuler au poste de Développeur Backend Java Confirmé. Mes compétences principales : Java, Maven, Spring Boot, Microservices, JUnit, Kafka, Docker, SQL.
+Mon CV est joint à ce message.
+
+Bien cordialement,
+Cyrine Haddad",CV_cyrine_haddad.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Neutre,"Cyrine Haddad postule à Développeur Backend Java Confirmé (OFF-006) ; CV joint, 6 an(s) d'expérience.",CAN-058,OFF-006,,Traité
+EML-042,2026-10-13 10:35:38,Rania Rezgui,rania.rezgui@mail-exemple.com,rh@entreprise-exemple.com,Proposition de collaboration,"Bonjour,
+
+Bien que je n'aie pas identifié d'offre correspondant exactement à mon profil, je souhaite vous faire part de ma candidature spontanée en tant que Comptable. Compétences : Excel, Comptabilité générale, SAP, Fiscalité, Facturation. CV en pièce jointe.
+
+Cordialement,
+Rania Rezgui",CV_rania_rezgui.pdf,Candidature spontanée,Agent tri des CV,Basse,formel,Neutre,"Rania Rezgui envoie une candidature spontanée (profil Comptable), CV joint.",CAN-034,,,Traité
+EML-055,2026-10-13 17:16:07,Zied Chebbi,zied.chebbi@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Ingénieur DevOps Confirmé (OFF-018),"salut, je postule pour l'offre Ingénieur DevOps Confirmé, mon cv est en pj. dispo des que possible. merci
+Zied",CV_zied_chebbi.pdf,Candidature à une offre,Agent tri des CV,Normale,informel,Neutre,"Zied Chebbi postule à Ingénieur DevOps Confirmé (OFF-018) ; CV joint, 4 an(s) d'expérience.",CAN-043,OFF-018,,Traité
+EML-067,2026-10-14 07:18:54,Chaima Trabelsi,chaima.trabelsi@mail-exemple.com,rh@entreprise-exemple.com,Disponibilités pour un entretien,"Bonjour,
+
+Pour planifier l'entretien, je suis disponible mardi et jeudi matin ainsi que vendredi après 14h. Dites-moi ce qui vous convient.
+
+Chaima",,Planification d'entretien,Agent planification,Normale,formel,Neutre,Chaima Trabelsi communique ses disponibilités pour l'entretien.,CAN-061,OFF-041,,Traité
+EML-006,2026-10-14 12:11:50,Bilel Chebbi,bilel.chebbi@entreprise-exemple.com,rh@entreprise-exemple.com,Demande : Changement de coordonnées bancaires,"Bonjour,
+
+Pourriez-vous m'établir une changement de coordonnées bancaires ? Matricule : EMP-1001.
+
+Cordialement,
+Bilel Chebbi",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Bilel Chebbi demande : demande : changement de coordonnées bancaires.,,,EMP-1662,Traité
+EML-027,2026-10-14 19:06:00,Fatma Haddad,fatma.haddad@mail-exemple.com,rh@entreprise-exemple.com,Disponibilités pour un entretien,"Bonjour,
+
+Pour planifier l'entretien, je suis disponible mardi et jeudi matin ainsi que vendredi après 14h. Dites-moi ce qui vous convient.
+
+Fatma",,Planification d'entretien,Agent planification,Normale,formel,Positif,Fatma Haddad communique ses disponibilités pour l'entretien.,CAN-063,OFF-034,,Traité
+EML-039,2026-10-15 12:09:05,Fares Bouzid,fares.bouzid@mail-exemple.com,rh@entreprise-exemple.com,Candidature spontanée,"Bonjour,
+
+Bien que je n'aie pas identifié d'offre correspondant exactement à mon profil, je souhaite vous faire part de ma candidature spontanée en tant que Data Analyst. Compétences : Tableau, Reporting, Power BI, Excel. CV en pièce jointe.
+
+Cordialement,
+Fares Bouzid",CV_fares_bouzid.pdf,Candidature spontanée,Agent tri des CV,Basse,formel,Neutre,"Fares Bouzid envoie une candidature spontanée (profil Data Analyst), CV joint.",CAN-030,,,Traité
+EML-060,2026-10-15 18:18:23,Fatma Zouari,fatma.zouari@entreprise-exemple.com,rh@entreprise-exemple.com,"Demande de congé pour décès d'un frère, d'une sœur ou d'un grand-parent","Bonjour,
+
+Demande de congé pour décès d'un frère, d'une sœur ou d'un grand-parent à partir du 25/11/2026. Mon manager est d'accord. Merci.
+Fatma Zouari",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,"Fatma Zouari () formule : demande de congé pour décès d'un frère, d'une sœur ou d'un grand-parent.",,,,Traité
+EML-057,2026-10-16 07:33:00,Cyrine Triki,cyrine.triki@entreprise-exemple.com,rh@entreprise-exemple.com,Question sur le télétravail,"Bonjour,
+
+Mon manager peut-il m'obliger à venir le mercredi ? Quelles sont les jours obligatoires ?
+
+Merci,
+Cyrine",,Question télétravail,Agent FAQ RH,Normale,formel,Neutre,Cyrine Triki pose une question sur les règles de télétravail.,,,EMP-1772,Traité
+EML-044,2026-10-16 14:21:01,Mohamed Mejri,mohamed.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Demande de congé paternité,"Bonjour,
+
+Demande de congé paternité à partir du 16/12/2026. Mon manager est d'accord. Merci.
+Mohamed Mejri",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,Mohamed Mejri (EMP-1465) formule : demande de congé paternité.,,,EMP-1465,Traité
+EML-025,2026-10-16 19:23:16,Nabil Bouzid,nabil.bouzid@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Data Scientist Confirmé (CDD) (OFF-016),"salut, je postule pour l'offre Data Scientist Confirmé (CDD), mon cv est en pj. dispo des que possible. merci
+Nabil",CV_nabil_bouzid.pdf,Candidature à une offre,Agent tri des CV,Normale,informel,Neutre,"Nabil Bouzid postule à Data Scientist Confirmé (CDD) (OFF-016) ; CV joint, 1 an(s) d'expérience.",CAN-038,OFF-016,,Traité
+EML-012,2026-10-16 19:54:28,Salma Naceur,salma.naceur@entreprise-exemple.com,rh@entreprise-exemple.com,Question horaires,"Bonjour,
+
+Quelles sont les horaires de travail pendant le Ramadan ?
+
+Merci,
+Salma",,Question horaires et présence,Agent FAQ RH,Basse,formel,Neutre,Salma Naceur pose une question sur les horaires et les règles de présence.,,,EMP-1252,Traité
+EML-069,2026-10-17 17:27:50,Rania Rezgui,rania.rezgui@mail-exemple.com,rh@entreprise-exemple.com,Confirmation de ma présence,"Bonjour,
+
+Je confirme ma présence à l'entretien du 06/11/2026 à 15:00. Pouvez-vous me préciser s'il se déroule en visio ou sur place ?
+
+Cordialement,
+Rania Rezgui",,Planification d'entretien,Agent planification,Normale,formel,Positif,Rania Rezgui confirme sa présence et demande le format de l'entretien.,CAN-034,OFF-040,,Traité
+EML-066,2026-10-17 19:04:26,Sonia Girard,sonia.girard@entreprise-exemple.com,rh@entreprise-exemple.com,Demande de congé de mariage de l'employé,"Bonjour,
+
+Je souhaite poser un congé de mariage de l'employé du 20/12/2026 au 27/12/2026. Merci de me confirmer la procédure.
+
+Sonia Girard (EMP-1009)",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,Sonia Girard () formule : demande de congé de mariage de l'employé.,,,,Traité
+EML-007,2026-10-18 07:02:47,Lucas Laabidi,lucas.laabidi@mail-exemple.com,rh@entreprise-exemple.com,Où en est mon dossier ?,"Bonjour,
+
+J'ai postulé il y a plus de deux semaines (réf. OFF-013) et je n'ai pas eu de retour. Pouvez-vous m'indiquer l'état de ma candidature ?
+
+Cordialement,
+Lucas Laabidi",,Relance de candidature,Agent suivi,Normale,formel,Neutre,Lucas Laabidi relance pour connaître l'état de sa candidature (OFF-013).,CAN-044,OFF-013,,Traité
+EML-017,2026-10-18 14:16:09,Sami Rezgui,sami.rezgui@mail-exemple.com,rh@entreprise-exemple.com,Où en est mon dossier ?,"Bonjour, je me permets de relancer concernant ma candidature. Toujours très intéressé(e) par le poste. Merci de votre retour.
+Sami",,Relance de candidature,Agent suivi,Normale,formel,Neutre,Sami Rezgui relance pour connaître l'état de sa candidature (OFF-004).,CAN-041,OFF-004,,Traité
+EML-002,2026-10-18 16:03:37,Mehdi Bouzid,mehdi.bouzid@entreprise-exemple.com,rh@entreprise-exemple.com,Réclamation – délai attestation,"Mon attestation de travail demandée il y a 10 jours n'est toujours pas arrivée alors que le délai est de 48h.
+
+Mehdi Bouzid",,Réclamation,Agent suivi,Haute,mécontent,Négatif,"Mehdi Bouzid signale un problème : réclamation – délai attestation ; ton mécontent, traitement prioritaire.",,,EMP-1429,Traité
+EML-071,2026-10-18 19:04:43,Mohamed Mejri,mohamed.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Attestation pour demande de visa,"Bonjour, j'ai besoin de attestation pour demande de visa pour la semaine prochaine, c'est possible ?
+Mohamed",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Mohamed Mejri demande : attestation pour demande de visa.,,,EMP-1465,En attente de validation humaine
+EML-048,2026-10-19 08:57:23,Sami Hammami,sami.hammami@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Matériel de bureau pour télétravail,"Bonjour,
+
+Je souhaite être remboursé de 95 TND pour matériel de bureau pour télétravail. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Sami Hammami (EMP-1023)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Sami Hammami demande un remboursement : matériel de bureau pour télétravail.,,,EMP-1666,Traité
+EML-020,2026-10-19 17:55:31,Olfa Chaabane,olfa.chaabane@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Billet de train ou d'avion,"Bonjour,
+
+Je souhaite être remboursé de 50 TND pour billet de train ou d'avion. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Olfa Chaabane (EMP-1035)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Olfa Chaabane demande un remboursement : billet de train ou d'avion.,,,EMP-1572,Traité
+EML-043,2026-10-20 08:48:00,Zied Chebbi,zied.chebbi@mail-exemple.com,rh@entreprise-exemple.com,Demande de report d'entretien,"Bonjour,
+
+Suite à un empêchement, serait-il possible de reporter mon entretien prévu le 05/11/2026 à 11:00 ? Je suis disponible la semaine suivante, de préférence l'après-midi.
+
+Merci,
+Zied Chebbi",,Planification d'entretien,Agent planification,Normale,formel,Positif,Zied Chebbi demande le report de son entretien.,CAN-043,OFF-018,,Traité
+EML-064,2026-10-20 09:21:35,Ines Girard,ines.girard@entreprise-exemple.com,rh@entreprise-exemple.com,URGENT attestation de congés,"Bonjour,
+
+Pourriez-vous m'établir une attestation de congés ? Matricule : EMP-1022.
+
+Cordialement,
+Ines Girard",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Ines Girard demande : attestation de congés.,,,EMP-1856,Traité
+EML-024,2026-10-20 17:57:18,Sami Naceur,sami.naceur@mail-exemple.com,rh@entreprise-exemple.com,Proposition de collaboration,"Bonjour,
+
+Bien que je n'aie pas identifié d'offre correspondant exactement à mon profil, je souhaite vous faire part de ma candidature spontanée en tant que Comptable. Compétences : Clôture mensuelle, Excel, Facturation, Comptabilité générale, Analyse financière. CV en pièce jointe.
+
+Cordialement,
+Sami Naceur",CV_sami_naceur.pdf,Candidature spontanée,Agent tri des CV,Basse,formel,Neutre,"Sami Naceur envoie une candidature spontanée (profil Comptable), CV joint.",CAN-032,,,Traité
+EML-063,2026-10-21 09:05:32,Salon Emploi,contact@salon-exemple.com,rh@entreprise-exemple.com,Invitation salon de l'emploi,Nous vous invitons à notre salon virtuel. Inscription gratuite pour les entreprises.,,Hors sujet / spam,Aucun (filtrer ou transférer),Basse,commercial,Neutre,Message non pertinent de Salon Emploi : Invitation salon de l'emploi. Aucune action RH requise.,,,,Filtré (spam)
+EML-005,2026-10-21 18:13:48,Marouen Ben Salah,marouen.ben-salah@mail-exemple.com,rh@entreprise-exemple.com,Suivi de candidature OFF-058,"Bonjour, je me permets de relancer concernant ma candidature. Toujours très intéressé(e) par le poste. Merci de votre retour.
+Marouen",,Relance de candidature,Agent suivi,Normale,formel,Neutre,Marouen Ben Salah relance pour connaître l'état de sa candidature (OFF-058).,CAN-005,OFF-058,,Traité
+EML-013,2026-10-22 14:46:30,Omar Laabidi,omar.laabidi@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Développeur Backend Java Confirmé (CDD) (OFF-008),"Bonjour,
+
+Je vous adresse ma candidature pour le poste de Développeur Backend Java Confirmé (CDD) (réf. OFF-008). Vous trouverez mon CV en pièce jointe. Je justifie de 4 an(s) d'expérience et reste disponible pour un entretien.
+
+Cordialement,
+Omar Laabidi",CV_omar_laabidi.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Positif,"Omar Laabidi postule à Développeur Backend Java Confirmé (CDD) (OFF-008) ; CV joint, 4 an(s) d'expérience.",CAN-039,OFF-008,,Traité
+EML-054,2026-10-23 09:44:27,Aymen Triki,aymen.triki@entreprise-exemple.com,rh@entreprise-exemple.com,Erreur sur mon bulletin de paie,"Bonjour,
+
+Il manque des heures supplémentaires validées sur ma fiche de paie d'octobre. Merci de corriger rapidement.
+
+Aymen Triki",,Réclamation,Agent suivi,Haute,mécontent,Négatif,"Aymen Triki signale un problème : erreur sur mon bulletin de paie ; ton mécontent, traitement prioritaire.",,,EMP-1339,Traité
+EML-029,2026-10-23 12:14:08,Bilel Chebbi,bilel.chebbi@entreprise-exemple.com,rh@entreprise-exemple.com,Question sur le télétravail,"Bonjour,
+
+Peut-on travailler depuis l'étranger pendant 2 semaines cet été ?
+
+Merci,
+Bilel",,Question télétravail,Agent FAQ RH,Normale,formel,Neutre,Bilel Chebbi pose une question sur les règles de télétravail.,,,EMP-1662,Traité
+EML-052,2026-10-23 12:45:21,Sami Martin,sami.martin@mail-exemple.com,rh@entreprise-exemple.com,Candidature – Chef de projet IT Confirmé (CDD) (OFF-024),"Bonjour,
+
+Je vous adresse ma candidature pour le poste de Chef de projet IT Confirmé (CDD) (réf. OFF-024). Vous trouverez mon CV en pièce jointe. Je justifie de 0 an(s) d'expérience et reste disponible pour un entretien.
+
+Cordialement,
+Sami Martin",CV_sami_martin.pdf,Candidature à une offre,Agent tri des CV,Normale,formel,Neutre,"Sami Martin postule à Chef de projet IT Confirmé (CDD) (OFF-024) ; CV joint, 0 an(s) d'expérience.",CAN-050,OFF-024,,Traité
+EML-062,2026-10-23 16:08:14,Karim Zouari,karim.zouari@mail-exemple.com,rh@entreprise-exemple.com,Demande de report d'entretien,"Bonjour,
+
+Suite à un empêchement, serait-il possible de reporter mon entretien prévu le 02/11/2026 à 09:00 ? Je suis disponible la semaine suivante, de préférence l'après-midi.
+
+Merci,
+Karim Zouari",,Planification d'entretien,Agent planification,Normale,formel,Neutre,Karim Zouari demande le report de son entretien.,CAN-048,OFF-011,,Traité
+EML-065,2026-10-23 16:27:38,Sonia Zouari,sonia.zouari@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Hébergement en mission,"Bonjour,
+
+Je souhaite être remboursé de 298 TND pour hébergement en mission. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Sonia Zouari (EMP-1037)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Sonia Zouari demande un remboursement : hébergement en mission.,,,EMP-1029,Traité
+EML-021,2026-10-24 17:35:14,Fatma Karray,fatma.karray@entreprise-exemple.com,rh@entreprise-exemple.com,Question horaires,"Bonjour,
+
+À quelle heure doit-on arriver au plus tard et combien de retards sont tolérés ?
+
+Merci,
+Fatma",,Question horaires et présence,Agent FAQ RH,Basse,formel,Neutre,Fatma Karray pose une question sur les horaires et les règles de présence.,,,EMP-1153,Traité
+EML-046,2026-10-24 18:32:49,Fares Mansouri,fares.mansouri@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement – Abonnement internet,"Bonjour,
+
+Je souhaite être remboursé de 262 TND pour abonnement internet. Les justificatifs sont joints. Quel est le plafond applicable ?
+
+Fares Mansouri (EMP-1003)",justificatifs.pdf,Remboursement de frais,Agent FAQ RH,Normale,formel,Neutre,Fares Mansouri demande un remboursement : abonnement internet.,,,EMP-1071,Traité
+EML-050,2026-10-25 09:03:38,Hatem Trabelsi,hatem.trabelsi@entreprise-exemple.com,rh@entreprise-exemple.com,"Demande de congé pour décès du conjoint, d'un enfant ou d'un parent","Bonjour, je voudrais prendre congé pour décès du conjoint, d'un enfant ou d'un parent mais je ne sais pas combien de jours j'ai droit. Pouvez-vous m'aider ?
+Hatem",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,"Hatem Trabelsi (EMP-1803) formule : demande de congé pour décès du conjoint, d'un enfant ou d'un parent.",,,EMP-1803,En attente de validation humaine
+EML-053,2026-10-25 12:58:04,Youssef Baccouche,youssef.baccouche@entreprise-exemple.com,rh@entreprise-exemple.com,Question sur le télétravail,"Bonjour,
+
+Bonjour, comment demander des jours de télétravail pour la semaine prochaine ?
+
+Merci,
+Youssef",,Question télétravail,Agent FAQ RH,Normale,formel,Positif,Youssef Baccouche pose une question sur les règles de télétravail.,,,,Traité
+EML-032,2026-10-26 07:20:02,Salma Naceur,salma.naceur@entreprise-exemple.com,rh@entreprise-exemple.com,Demande de congé annuel payé,"Bonjour, je voudrais prendre congé annuel payé mais je ne sais pas combien de jours j'ai droit. Pouvez-vous m'aider ?
+Salma",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,Salma Naceur (EMP-1252) formule : demande de congé annuel payé.,,,EMP-1252,Traité
+EML-051,2026-10-26 09:32:39,Olfa Chaabane,olfa.chaabane@entreprise-exemple.com,rh@entreprise-exemple.com,Demande de congé maternité,"Bonjour, je voudrais prendre congé maternité mais je ne sais pas combien de jours j'ai droit. Pouvez-vous m'aider ?
+Olfa",,Demande de congé,Agent FAQ RH,Normale,formel,Neutre,Olfa Chaabane (EMP-1572) formule : demande de congé maternité.,,,EMP-1572,En attente de validation humaine
+EML-014,2026-10-27 07:41:12,Salma Naceur,salma.naceur@entreprise-exemple.com,rh@entreprise-exemple.com,Question sur le télétravail,"Bonjour,
+
+Est-ce que l'entreprise fournit un écran pour le télétravail ?
+
+Merci,
+Salma",,Question télétravail,Agent FAQ RH,Normale,formel,Neutre,Salma Naceur pose une question sur les règles de télétravail.,,,EMP-1252,Traité
+EML-047,2026-10-27 08:33:07,Marouen Chaabane,marouen.chaabane@entreprise-exemple.com,rh@entreprise-exemple.com,Urgent – malade ce matin,"Bonjour, urgence familiale, je dois m'absenter aujourd'hui. Je préviens aussi mon manager.
+Marouen",,Absence imprévue,Agent FAQ RH,Haute,formel,Positif,Marouen Chaabane signale une absence imprévue ; justificatif à suivre.,,,EMP-1143,Traité
+EML-061,2026-10-28 07:21:26,Fatma Zouari,fatma.zouari@entreprise-exemple.com,rh@entreprise-exemple.com,Absent aujourd'hui,"Bonjour, urgence familiale, je dois m'absenter aujourd'hui. Je préviens aussi mon manager.
+Fatma",,Absence imprévue,Agent FAQ RH,Haute,formel,Positif,Fatma Zouari signale une absence imprévue ; justificatif à suivre.,,,,Traité
+EML-009,2026-10-28 16:09:15,Claire Mejri,claire.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Ordinateur défectueux,"Bonjour, mon PC portable ne démarre plus depuis lundi, je ne peux plus travailler. Qui contacter ?
+
+Claire Mejri",,Réclamation,Agent suivi,Haute,mécontent,Négatif,"Claire Mejri signale un problème : ordinateur défectueux ; ton mécontent, traitement prioritaire.",,,EMP-1719,En attente de validation humaine
+EML-028,2026-10-28 17:42:29,Wafa Mejri,wafa.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Question horaires,"Bonjour,
+
+Y a-t-il une obligation de pointer quand on est en télétravail ?
+
+Merci,
+Wafa",,Question horaires et présence,Agent FAQ RH,Basse,formel,Neutre,Wafa Mejri pose une question sur les horaires et les règles de présence.,,,,Traité
+EML-034,2026-10-29 11:34:48,Loterie Mondiale,gagnant@loterie-spam.xyz,rh@entreprise-exemple.com,Vous avez gagné un voyage !!!,Félicitations ! Envoyez vos coordonnées bancaires pour recevoir votre prix.,,Hors sujet / spam,Aucun (filtrer ou transférer),Basse,commercial,Neutre,Message non pertinent de Loterie Mondiale : Vous avez gagné un voyage !!!. Aucune action RH requise.,,,,Filtré (spam)
+EML-030,2026-10-29 14:01:19,Revue Pro,news@revue-exemple.com,rh@entreprise-exemple.com,Newsletter novembre,Découvrez les actualités du secteur ce mois-ci. Se désabonner.,,Hors sujet / spam,Aucun (filtrer ou transférer),Basse,commercial,Neutre,Message non pertinent de Revue Pro : Newsletter novembre. Aucune action RH requise.,,,,Filtré (spam)
+EML-023,2026-10-29 16:16:35,Sami Hammami,sami.hammami@entreprise-exemple.com,rh@entreprise-exemple.com,Absence imprévue,"Bonjour, je suis malade ce matin et ne pourrai pas venir. Certificat médical à suivre.
+Sami",,Absence imprévue,Agent FAQ RH,Haute,formel,Neutre,Sami Hammami signale une absence imprévue ; justificatif à suivre.,,,EMP-1666,Traité
+EML-019,2026-10-30 13:25:31,Aymen Zouari,aymen.zouari@entreprise-exemple.com,rh@entreprise-exemple.com,Remboursement toujours pas reçu,"Bonjour, cela fait 6 semaines que j'attends mon remboursement de mission. Ce n'est pas normal.
+
+Aymen Zouari",,Réclamation,Agent suivi,Haute,mécontent,Négatif,"Aymen Zouari signale un problème : remboursement toujours pas reçu ; ton mécontent, traitement prioritaire.",,,EMP-1912,Traité
+EML-001,2026-10-30 17:58:10,Sami Hammami,sami.hammami@entreprise-exemple.com,rh@entreprise-exemple.com,Absent aujourd'hui,"Bonjour, enfant malade, je serai absent(e) 2 jours. Que dois-je fournir ?
+Sami",,Absence imprévue,Agent FAQ RH,Haute,formel,Neutre,Sami Hammami signale une absence imprévue ; justificatif à suivre.,,,EMP-1666,Traité
+EML-059,2026-10-31 10:51:09,Wafa Mejri,wafa.mejri@entreprise-exemple.com,rh@entreprise-exemple.com,Demande : Attestation de travail,"Bonjour, j'ai besoin de attestation de travail pour la semaine prochaine, c'est possible ?
+Wafa",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Wafa Mejri demande : demande : attestation de travail.,,,,En attente de validation humaine
+EML-072,2026-10-31 13:49:34,Cyrine Moreau,cyrine.moreau@entreprise-exemple.com,rh@entreprise-exemple.com,Attestation de stage,"Bonjour,
+
+Pourriez-vous m'établir une attestation de stage ? Matricule : EMP-1043.
+
+Cordialement,
+Cyrine Moreau",,Demande d'attestation,Agent FAQ RH,Normale,pressé,Neutre,Cyrine Moreau demande : attestation de stage.,,,EMP-1472,En attente de validation humaine
+EML-031,2026-10-31 16:00:00,Salma Khelifi,salma.khelifi@entreprise-exemple.com,rh@entreprise-exemple.com,Urgent – malade ce matin,"Bonjour, enfant malade, je serai absent(e) 2 jours. Que dois-je fournir ?
+Salma",,Absence imprévue,Agent FAQ RH,Haute,formel,Positif,Salma Khelifi signale une absence imprévue ; justificatif à suivre.,,,EMP-1986,Nouveau

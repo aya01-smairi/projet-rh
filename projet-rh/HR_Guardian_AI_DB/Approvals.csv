@@ -1,0 +1,518 @@
+﻿approval_id,created_at,agent_name,action_type,action_description,related_entity_type,related_entity_id,proposed_content,risk_level,approver_role,assigned_to,status,decided_by,decided_at,decision_comment,expires_at
+APV-001,2026-09-24 12:49:10,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Julie Laabidi,Application,APP-002,"Profil moyennement adapté (score 54/100). Manque : Recherche utilisateur, Design system. Décision : présélectionner ou refuser.",Faible,RH,EMP-1910,Expiré,,,,2026-10-08 12:49:10
+APV-002,2026-09-25 14:51:04,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Omar Karray,Application,APP-003,"Créneaux proposés : SLT-027, SLT-074, SLT-038 pour le poste Responsable RH Junior.",Faible,RH,EMP-1090,Expiré,,,,2026-10-09 14:51:04
+APV-003,2026-10-01 11:10:49,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Sami Rezgui (score 39/100),Application,APP-005,"Bonjour Sami,
+
+Merci pour votre candidature au poste de Développeur Full Stack Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Expiré,,,,2026-10-15 11:10:49
+APV-004,2026-10-01 13:43:14,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Chaima Laabidi,Application,APP-006,"Créneaux proposés : SLT-074, SLT-040, SLT-069 pour le poste Data Scientist Confirmé (CDD).",Faible,RH,EMP-1829,Expiré,,,,2026-10-15 13:43:14
+APV-005,2026-10-01 17:30:35,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Dorra Mejri (score 19/100),Application,APP-008,"Bonjour Dorra,
+
+Merci pour votre candidature au poste de Data Analyst Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-03 23:22:35,Validé sans modification,2026-10-15 17:30:35
+APV-006,2026-10-02 09:52:56,HR_FAQ_Agent,ESCALATE_SENSITIVE_QUESTION,"Question sensible/hors périmètre : Mon manager refuse mon télétravail alors que je remplis les critères, ",Employee_Question,QST-071,Je ne peux pas répondre de façon fiable avec les documents disponibles ; la question est transmise à la RH.,Élevé,RH,EMP-1090,Expiré,,,,2026-10-16 09:52:56
+APV-007,2026-10-02 12:15:55,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Lucas Laabidi (score 15/100),Application,APP-009,"Bonjour Lucas,
+
+Merci pour votre candidature au poste de Data Scientist Junior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-04 09:52:55,Conforme à la politique RH,2026-10-16 12:15:55
+APV-008,2026-10-03 17:17:11,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Aymen Gharbi,Application,APP-013,"Profil moyennement adapté (score 57/100). Manque : Droit du travail, Recrutement. Décision : présélectionner ou refuser.",Faible,RH,EMP-1910,Expiré,,,,2026-10-17 17:17:11
+APV-009,2026-10-04 08:47:30,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Hatem Zouari (score 0/100),Application,APP-014,"Bonjour Hatem,
+
+Merci pour votre candidature au poste de Ingénieur QA Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,Expiré,,,,2026-10-18 08:47:30
+APV-010,2026-10-04 09:49:13,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-025 à Karim Bouzid,Followup,FUP-035,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1486,Modifié,EMP-1486,2026-10-04 12:20:13,Formulation ajustée,2026-10-18 09:49:13
+APV-011,2026-10-04 11:41:20,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Dorra Triki,Application,APP-004,"Bonjour Dorra,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Développeur Full Stack Confirmé le 2026-11-23 à 10:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-05 22:34:20,Validé sans modification,2026-10-18 11:41:20
+APV-012,2026-10-04 13:23:53,HR_FAQ_Agent,VALIDATE_AI_ANSWER,"Valider la réponse IA : Question sur le télétravail : éligibilité au télétravail, comment ça m",Employee_Question,QST-016,Réponse proposée d'après DOC-016 en attente de validation RH.,Faible,RH,EMP-1090,Expiré,,,,2026-10-18 13:23:53
+APV-013,2026-10-04 17:28:44,HR_FAQ_Agent,ESCALATE_SENSITIVE_QUESTION,Question sensible/hors périmètre : Ai-je droit à une prime de naissance de jumeaux ?,Employee_Question,QST-070,Je ne peux pas répondre de façon fiable avec les documents disponibles ; la question est transmise à la RH.,Élevé,RH,EMP-1829,Expiré,,,,2026-10-18 17:28:44
+APV-014,2026-10-05 12:19:06,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Hamza Rezgui,Application,APP-011,"Bonjour Hamza,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Développeur Backend Java Senior le 2026-11-20 à 11:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-05 17:59:06,Validé sans modification,2026-10-19 12:19:06
+APV-015,2026-10-06 16:38:34,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Lucas Sassi,Application,APP-007,"Bonjour Lucas,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Conseiller Support Client Senior le 2026-11-02 à 16:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-07 13:24:34,Validé sans modification,2026-10-20 16:38:34
+APV-016,2026-10-06 17:54:11,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Sami Bouazizi (score 15/100),Application,APP-019,"Bonjour Sami,
+
+Merci pour votre candidature au poste de Designer UI/UX Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-08 15:54:11,OK pour envoi,2026-10-20 17:54:11
+APV-017,2026-10-07 11:35:28,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Rami Trabelsi,Application,APP-010,"Bonjour Rami,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Scientist Senior le 2026-11-17 à 14:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-08 18:47:28,Validé sans modification,2026-10-21 11:35:28
+APV-018,2026-10-07 18:26:20,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (74 TND),Email,EML-049,Montant demandé : 74 TND. Vérifier le plafond et les justificatifs avant réponse.,Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-08 23:19:20,OK pour envoi,2026-10-21 18:26:20
+APV-019,2026-10-08 09:24:33,HR_FAQ_Agent,ESCALATE_SENSITIVE_QUESTION,Question sensible/hors périmètre : Pouvez-vous me donner les coordonnées personnelles d'un candidat ?,Employee_Question,QST-068,Je ne peux pas répondre de façon fiable avec les documents disponibles ; la question est transmise à la RH.,Élevé,RH,EMP-1090,Expiré,,,,2026-10-22 09:24:33
+APV-020,2026-10-08 10:11:15,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Mohamed Laabidi (score 0/100),Application,APP-022,"Bonjour Mohamed,
+
+Merci pour votre candidature au poste de Assistant(e) de direction Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-10 14:18:15,OK pour envoi,2026-10-22 10:11:15
+APV-021,2026-10-08 10:38:42,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-053 à Karim Bouzid,Followup,FUP-058,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1486,Approuvé,EMP-1486,2026-10-09 12:16:42,OK pour envoi,2026-10-22 10:38:42
+APV-022,2026-10-08 11:53:07,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Aymen Gharbi (score 62/100),Application,APP-023,"Bonjour Aymen,
+
+Merci pour votre candidature au poste de Responsable RH Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Expiré,,,,2026-10-22 11:53:07
+APV-023,2026-10-08 12:54:18,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Emna Zouari (score 15/100),Application,APP-024,"Bonjour Emna,
+
+Merci pour votre candidature au poste de Assistant(e) de direction Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-09 22:01:18,Conforme à la politique RH,2026-10-22 12:54:18
+APV-024,2026-10-08 14:16:56,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-015 à Ines Mansouri,Followup,FUP-047,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1619,Expiré,,,,2026-10-22 14:16:56
+APV-025,2026-10-08 14:26:52,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Lina Zouari,Application,APP-027,"Créneaux proposés : SLT-061, SLT-037, SLT-064 pour le poste Assistant(e) de direction Confirmé (CDD).",Faible,RH,EMP-1090,Expiré,,,,2026-10-22 14:26:52
+APV-026,2026-10-08 15:23:17,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Julie Laabidi (score 8/100),Application,APP-029,"Bonjour Julie,
+
+Merci pour votre candidature au poste de Administrateur Systèmes et Réseaux Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-10 03:41:17,Conforme à la politique RH,2026-10-22 15:23:17
+APV-027,2026-10-08 15:56:35,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Wafa Chaabane,Application,APP-030,"Créneaux proposés : SLT-005, SLT-009, SLT-038 pour le poste Ingénieur DevOps Confirmé (CDD).",Faible,RH,EMP-1829,Expiré,,,,2026-10-22 15:56:35
+APV-028,2026-10-08 19:20:49,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (107 TND),Email,EML-026,Montant demandé : 107 TND. Vérifier le plafond et les justificatifs avant réponse.,Moyen,RH,EMP-1829,Expiré,,,,2026-10-22 19:20:49
+APV-029,2026-10-08 19:44:24,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (377 TND),Email,EML-068,Montant demandé : 377 TND. Vérifier le plafond et les justificatifs avant réponse.,Élevé,RH,EMP-1090,Expiré,,,,2026-10-22 19:44:24
+APV-030,2026-10-09 10:34:44,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Amira Mansouri (score 0/100),Application,APP-035,"Bonjour Amira,
+
+Merci pour votre candidature au poste de Administrateur Systèmes et Réseaux Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-11 21:07:44,Conforme à la politique RH,2026-10-23 10:34:44
+APV-031,2026-10-09 15:00:53,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Chaima Naceur,Application,APP-036,"Créneaux proposés : SLT-020, SLT-015, SLT-034 pour le poste Ingénieur DevOps Confirmé.",Faible,RH,EMP-1829,Expiré,,,,2026-10-23 15:00:53
+APV-032,2026-10-09 15:14:42,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Karim Gharbi,Application,APP-037,"Profil moyennement adapté (score 60/100). Manque : Fiscalité, Facturation. Décision : présélectionner ou refuser.",Faible,RH,EMP-1910,Expiré,,,,2026-10-23 15:14:42
+APV-033,2026-10-10 10:11:42,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : Demande : Solde de tout compte,Email,EML-016,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-11 17:44:42,OK pour envoi,2026-10-24 10:11:42
+APV-034,2026-10-10 10:14:40,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Marouen Ben Salah (score 49/100),Application,APP-039,"Bonjour Marouen,
+
+Merci pour votre candidature au poste de Ingénieur QA Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,Expiré,,,,2026-10-24 10:14:40
+APV-035,2026-10-10 10:43:31,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : Demande : Attestation pour dossier bancaire ou crédit,Email,EML-003,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1829,Expiré,,,,2026-10-24 10:43:31
+APV-036,2026-10-10 11:32:19,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Aymen Naceur,Application,APP-016,"Bonjour Aymen,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Ingénieur DevOps Junior le 2026-11-05 à 16:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-10 21:46:19,Validé sans modification,2026-10-24 11:32:19
+APV-037,2026-10-10 13:35:29,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Julie Chaabane,Application,APP-025,"Bonjour Julie,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Administrateur Systèmes et Réseaux Confirmé (CDD) le 2026-11-13 à 10:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-11 05:19:29,OK pour envoi,2026-10-24 13:35:29
+APV-038,2026-10-10 17:03:28,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Slim Dubois,Application,APP-018,"Bonjour Slim,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Ingénieur DevOps Confirmé le 2026-11-10 à 14:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-11 01:40:28,Conforme à la politique RH,2026-10-24 17:03:28
+APV-039,2026-10-10 17:07:45,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Karim Sassi,Application,APP-033,"Bonjour Karim,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Commercial B2B Junior le 2026-11-25 à 11:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-12 21:20:45,Conforme à la politique RH,2026-10-24 17:07:45
+APV-040,2026-10-11 10:09:40,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-051 à Karim Bouzid,Followup,FUP-062,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1486,Expiré,,,,2026-10-25 10:09:40
+APV-041,2026-10-11 10:13:33,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-034 à Ines Mansouri,Followup,FUP-024,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1619,Expiré,,,,2026-10-25 10:13:33
+APV-042,2026-10-11 13:15:25,HR_FAQ_Agent,ESCALATE_SENSITIVE_QUESTION,Question sensible/hors périmètre : Combien de jours de congé me reste-t-il exactement ?,Employee_Question,QST-072,Je ne peux pas répondre de façon fiable avec les documents disponibles ; la question est transmise à la RH.,Élevé,RH,EMP-1090,Expiré,,,,2026-10-25 13:15:25
+APV-043,2026-10-12 10:43:09,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Julien Naceur,Application,APP-021,"Bonjour Julien,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Scientist Senior le 2026-11-25 à 11:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Modifié,EMP-1910,2026-10-13 04:16:09,Date corrigée puis validé,2026-10-26 10:43:09
+APV-044,2026-10-12 14:31:09,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Fatma Haddad,Application,APP-026,"Bonjour Fatma,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Chargé de recrutement Confirmé le 2026-11-09 à 11:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-13 01:59:09,Conforme à la politique RH,2026-10-26 14:31:09
+APV-045,2026-10-12 15:34:40,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Youssef Lefèvre,Application,APP-020,"Bonjour Youssef,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Ingénieur DevOps Confirmé (CDD) le 2026-11-09 à 14:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-12 17:29:40,Validé sans modification,2026-10-26 15:34:40
+APV-046,2026-10-12 15:35:53,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Aymen Bouzid (score 0/100),Application,APP-048,"Bonjour Aymen,
+
+Merci pour votre candidature au poste de Data Analyst Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Expiré,,,,2026-10-26 15:35:53
+APV-047,2026-10-13 12:00:47,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Rania Mejri,Application,APP-052,Profil moyennement adapté (score 92/100). Manque : aucune. Décision : présélectionner ou refuser.,Faible,RH,EMP-1090,Expiré,,,,2026-10-27 12:00:47
+APV-048,2026-10-13 14:53:00,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Zied Haddad,Application,APP-042,"Bonjour Zied,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Chargé de recrutement Junior le 2026-11-23 à 11:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-14 13:00:00,Validé sans modification,2026-10-27 14:53:00
+APV-049,2026-10-13 15:13:44,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Camille Laabidi,Application,APP-028,"Bonjour Camille,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Administrateur Systèmes et Réseaux Confirmé (CDD) le 2026-11-18 à 16:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-16 01:30:44,OK pour envoi,2026-10-27 15:13:44
+APV-050,2026-10-13 16:58:21,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Chaima Trabelsi,Application,APP-031,"Bonjour Chaima,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Commercial B2B Junior le 2026-11-06 à 15:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-15 08:01:21,Validé sans modification,2026-10-27 16:58:21
+APV-051,2026-10-13 17:06:31,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Sami Moreau,Application,APP-032,"Bonjour Sami,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Responsable Marketing Digital Senior le 2026-11-16 à 16:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-13 22:43:31,OK pour envoi,2026-10-27 17:06:31
+APV-052,2026-10-14 11:05:33,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Hatem Chebbi,Application,APP-038,"Bonjour Hatem,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Analyst Junior le 2026-11-27 à 15:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-15 00:24:33,OK pour envoi,2026-10-28 11:05:33
+APV-053,2026-10-14 12:24:50,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : Demande : Changement de coordonnées bancaires,Email,EML-006,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1910,Expiré,,,,2026-10-28 12:24:50
+APV-054,2026-10-14 13:43:29,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Pierre Khelifi,Application,APP-040,"Bonjour Pierre,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Scientist Junior le 2026-11-20 à 16:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-15 23:21:29,Conforme à la politique RH,2026-10-28 13:43:29
+APV-055,2026-10-14 15:40:55,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Ahmed Baccouche,Application,APP-043,"Bonjour Ahmed,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Scientist Confirmé (CDD) le 2026-11-20 à 11:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Modifié,EMP-1910,2026-10-15 09:55:55,Formulation ajustée,2026-10-28 15:40:55
+APV-056,2026-10-14 15:52:50,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Dorra Mejri,Application,APP-056,"Créneaux proposés : SLT-003, SLT-020, SLT-029 pour le poste Responsable Marketing Digital Confirmé (CDD).",Faible,RH,EMP-1090,Expiré,,,,2026-10-28 15:52:50
+APV-057,2026-10-14 17:32:39,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Cyrine Haddad,Application,APP-050,"Bonjour Cyrine,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Développeur Backend Java Confirmé le 2026-11-20 à 15:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-17 00:54:39,OK pour envoi,2026-10-28 17:32:39
+APV-058,2026-10-15 08:54:07,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Fares Bouzid,Application,APP-057,"Profil moyennement adapté (score 54/100). Manque : SQL, Python, Statistiques. Décision : présélectionner ou refuser.",Faible,RH,EMP-1829,Expiré,,,,2026-10-29 08:54:07
+APV-059,2026-10-15 09:18:04,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Maram Naceur (score 15/100),Application,APP-059,"Bonjour Maram,
+
+Merci pour votre candidature au poste de Data Analyst Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-16 07:31:04,Validé sans modification,2026-10-29 09:18:04
+APV-060,2026-10-15 12:47:43,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Cyrine Ayari,Application,APP-045,"Bonjour Cyrine,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Ingénieur QA Senior le 2026-11-27 à 14:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-16 15:31:43,Validé sans modification,2026-10-29 12:47:43
+APV-061,2026-10-15 13:20:29,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Hatem Gharbi,Application,APP-046,"Bonjour Hatem,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Responsable RH Junior le 2026-11-26 à 11:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-17 21:53:29,Conforme à la politique RH,2026-10-29 13:20:29
+APV-062,2026-10-15 13:43:39,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Karim Chaabane (score 15/100),Application,APP-062,"Bonjour Karim,
+
+Merci pour votre candidature au poste de Chargé de recrutement Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-18 02:02:39,Validé sans modification,2026-10-29 13:43:39
+APV-063,2026-10-15 15:36:58,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Karim Zouari,Application,APP-055,"Bonjour Karim,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Analyst Senior le 2026-11-02 à 09:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-17 11:36:58,Conforme à la politique RH,2026-10-29 15:36:58
+APV-064,2026-10-15 17:02:34,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Rania Rezgui,Application,APP-049,"Bonjour Rania,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Comptable Confirmé (CDD) le 2026-11-06 à 15:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-17 13:40:34,Conforme à la politique RH,2026-10-29 17:02:34
+APV-065,2026-10-16 09:56:28,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Sami Rezgui (score 0/100),Application,APP-064,"Bonjour Sami,
+
+Merci pour votre candidature au poste de Chef de projet IT Senior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-18 13:11:28,OK pour envoi,2026-10-30 09:56:28
+APV-066,2026-10-16 12:31:44,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Hela Lefèvre (score 50/100),Application,APP-065,"Bonjour Hela,
+
+Merci pour votre candidature au poste de Commercial B2B Junior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-16 13:52:44,Conforme à la politique RH,2026-10-30 12:31:44
+APV-067,2026-10-16 14:27:01,HR_FAQ_Agent,ROUTE_LEAVE_REQUEST_TO_MANAGER,Transmettre la demande de congé de Mohamed Mejri à son manager,Email,EML-044,Demande à valider par le manager EMP-1985.,Faible,Manager,EMP-1985,Expiré,,,,2026-10-30 14:27:01
+APV-068,2026-10-16 14:57:24,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Zied Chebbi,Application,APP-047,"Bonjour Zied,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Ingénieur DevOps Confirmé le 2026-11-05 à 11:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-16 23:15:24,OK pour envoi,2026-10-30 14:57:24
+APV-069,2026-10-16 17:27:54,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Fares Chaabane,Application,APP-044,"Bonjour Fares,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Analyst Confirmé le 2026-11-16 à 09:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1910,Approuvé,EMP-1910,2026-10-17 07:25:54,Validé sans modification,2026-10-30 17:27:54
+APV-070,2026-10-17 12:46:26,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Aymen Bouzid (score 0/100),Application,APP-066,"Bonjour Aymen,
+
+Merci pour votre candidature au poste de Comptable Senior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Expiré,,,,2026-10-31 12:46:26
+APV-071,2026-10-17 13:30:52,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-027 à Ines Chaabane,Followup,FUP-050,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1104,Approuvé,EMP-1104,2026-10-19 13:28:52,OK pour envoi,2026-10-31 13:30:52
+APV-072,2026-10-17 18:46:48,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Claire Triki,Application,APP-051,"Bonjour Claire,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Chef de projet IT Senior le 2026-11-26 à 09:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-19 12:35:48,Conforme à la politique RH,2026-10-31 18:46:48
+APV-073,2026-10-18 09:22:55,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Manel Rezgui (score 15/100),Application,APP-067,"Bonjour Manel,
+
+Merci pour votre candidature au poste de Data Scientist Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,En attente,,,,2026-11-01 09:22:55
+APV-074,2026-10-18 10:25:06,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Karim Jlassi (score 15/100),Application,APP-068,"Bonjour Karim,
+
+Merci pour votre candidature au poste de Chef de projet IT Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,En attente,,,,2026-11-01 10:25:06
+APV-075,2026-10-18 11:12:23,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Claire Naceur (score 15/100),Application,APP-069,"Bonjour Claire,
+
+Merci pour votre candidature au poste de Administrateur Systèmes et Réseaux Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-20 19:15:23,Validé sans modification,2026-11-01 11:12:23
+APV-076,2026-10-18 13:34:15,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Rania Mejri,Application,APP-070,"Créneaux proposés : SLT-074, SLT-036, SLT-069 pour le poste Ingénieur DevOps Junior.",Faible,RH,EMP-1829,En attente,,,,2026-11-01 13:34:15
+APV-077,2026-10-18 15:26:35,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Fatma Sassi,Application,APP-054,"Bonjour Fatma,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Scientist Junior le 2026-11-20 à 14:00 (Présentiel).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1090,Approuvé,EMP-1090,2026-10-19 11:55:35,Validé sans modification,2026-11-01 15:26:35
+APV-078,2026-10-18 16:28:37,Email_Triage_Agent,REPLY_TO_COMPLAINT,Répondre à la réclamation de Mehdi Bouzid,Email,EML-002,"Bonjour,
+
+Nous avons bien reçu votre message concernant : réclamation – délai attestation. Nous traitons votre demande en priorité et reviendrons vers vous sous 48 h.
+
+Cordialement,
+Service RH",Moyen,RH,EMP-1829,Rejeté,EMP-1829,2026-10-19 11:45:37,Action non pertinente,2026-11-01 16:28:37
+APV-079,2026-10-18 19:22:43,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : Attestation pour demande de visa,Email,EML-071,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1829,En attente,,,,2026-11-01 19:22:43
+APV-080,2026-10-19 09:23:23,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (95 TND),Email,EML-048,Montant demandé : 95 TND. Vérifier le plafond et les justificatifs avant réponse.,Moyen,RH,EMP-1090,Rejeté,EMP-1090,2026-10-21 19:58:23,"À reformuler, informations insuffisantes",2026-11-02 09:23:23
+APV-081,2026-10-19 09:49:10,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Nicolas Dubois,Application,APP-058,"Bonjour Nicolas,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Administrateur Systèmes et Réseaux Junior le 2026-11-09 à 16:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-21 04:09:10,Conforme à la politique RH,2026-11-02 09:49:10
+APV-082,2026-10-19 10:34:02,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Chaima Naceur (score 15/100),Application,APP-071,"Bonjour Chaima,
+
+Merci pour votre candidature au poste de Data Scientist Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-20 22:28:02,Validé sans modification,2026-11-02 10:34:02
+APV-083,2026-10-19 13:22:06,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Ines Hammami (score 54/100),Application,APP-072,"Bonjour Ines,
+
+Merci pour votre candidature au poste de Chef de projet IT Junior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,En attente,,,,2026-11-02 13:22:06
+APV-084,2026-10-19 14:39:29,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Hamza Ferchichi (score 39/100),Application,APP-073,"Bonjour Hamza,
+
+Merci pour votre candidature au poste de Chargé de recrutement Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Modifié,EMP-1090,2026-10-21 03:52:29,Formulation ajustée,2026-11-02 14:39:29
+APV-085,2026-10-19 18:13:31,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (50 TND),Email,EML-020,Montant demandé : 50 TND. Vérifier le plafond et les justificatifs avant réponse.,Moyen,RH,EMP-1090,Rejeté,EMP-1090,2026-10-20 13:15:31,"À reformuler, informations insuffisantes",2026-11-02 18:13:31
+APV-086,2026-10-20 09:39:35,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : URGENT attestation de congés,Email,EML-064,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1829,Modifié,EMP-1829,2026-10-20 12:49:35,Date corrigée puis validé,2026-11-03 09:39:35
+APV-087,2026-10-20 10:38:24,Scheduling_Agent,SEND_INTERVIEW_INVITATION,Envoyer l'invitation d'entretien à Nabil Bouzid,Application,APP-060,"Bonjour Nabil,
+
+Nous avons le plaisir de vous inviter à un entretien pour le poste de Data Scientist Confirmé (CDD) le 2026-11-17 à 11:00 (Visio).
+
+Merci de confirmer votre présence.
+
+Cordialement,
+L'équipe RH",Faible,RH,EMP-1829,Approuvé,EMP-1829,2026-10-22 13:18:24,Conforme à la politique RH,2026-11-03 10:38:24
+APV-088,2026-10-20 14:45:29,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Lina Hammami,Application,APP-074,"Créneaux proposés : SLT-054, SLT-022, SLT-069 pour le poste Administrateur Systèmes et Réseaux Confirmé.",Faible,RH,EMP-1910,En attente,,,,2026-11-03 14:45:29
+APV-089,2026-10-21 10:21:08,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Marouen Ben Salah (score 44/100),Application,APP-076,"Bonjour Marouen,
+
+Merci pour votre candidature au poste de Ingénieur QA Senior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-22 13:42:08,OK pour envoi,2026-11-04 10:21:08
+APV-090,2026-10-21 13:07:58,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Olfa Moreau (score 42/100),Application,APP-077,"Bonjour Olfa,
+
+Merci pour votre candidature au poste de Chargé de recrutement Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-22 04:35:58,OK pour envoi,2026-11-04 13:07:58
+APV-091,2026-10-21 14:49:40,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Nabil Chebbi (score 15/100),Application,APP-078,"Bonjour Nabil,
+
+Merci pour votre candidature au poste de Chef de projet IT Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,En attente,,,,2026-11-04 14:49:40
+APV-092,2026-10-22 14:49:53,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-001 à Ines Mansouri,Followup,FUP-016,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1619,En attente,,,,2026-11-05 14:49:53
+APV-093,2026-10-23 10:06:27,Email_Triage_Agent,REPLY_TO_COMPLAINT,Répondre à la réclamation de Aymen Triki,Email,EML-054,"Bonjour,
+
+Nous avons bien reçu votre message concernant : erreur sur mon bulletin de paie. Nous traitons votre demande en priorité et reviendrons vers vous sous 48 h.
+
+Cordialement,
+Service RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-23 20:50:27,OK pour envoi,2026-11-06 10:06:27
+APV-094,2026-10-23 16:30:00,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Nicolas Haddad,Application,APP-083,Profil moyennement adapté (score 96/100). Manque : aucune. Décision : présélectionner ou refuser.,Faible,RH,EMP-1910,En attente,,,,2026-11-06 16:30:00
+APV-095,2026-10-23 16:52:38,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (298 TND),Email,EML-065,Montant demandé : 298 TND. Vérifier le plafond et les justificatifs avant réponse.,Moyen,RH,EMP-1829,Modifié,EMP-1829,2026-10-24 14:28:38,Date corrigée puis validé,2026-11-06 16:52:38
+APV-096,2026-10-24 08:57:18,CV_Screening_Agent,SEND_SHORTLIST_TO_MANAGER,Transmettre la shortlist de OFF-007 à Ines Chaabane,Followup,FUP-040,Shortlist classée par score d'adéquation (top 5).,Faible,Manager,EMP-1104,Approuvé,EMP-1104,2026-10-24 10:08:18,OK pour envoi,2026-11-07 08:57:18
+APV-097,2026-10-24 16:49:51,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Sonia Triki,Application,APP-084,Profil moyennement adapté (score 92/100). Manque : aucune. Décision : présélectionner ou refuser.,Faible,RH,EMP-1090,En attente,,,,2026-11-07 16:49:51
+APV-098,2026-10-24 18:35:49,HR_FAQ_Agent,VALIDATE_REIMBURSEMENT,Vérifier la demande de remboursement (262 TND),Email,EML-046,Montant demandé : 262 TND. Vérifier le plafond et les justificatifs avant réponse.,Moyen,RH,EMP-1829,Rejeté,EMP-1829,2026-10-25 02:31:49,Action non pertinente,2026-11-07 18:35:49
+APV-099,2026-10-25 08:59:12,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Nabil Ben Salah,Application,APP-085,"Créneaux proposés : SLT-024, SLT-069, SLT-020 pour le poste Chef de projet IT Junior.",Faible,RH,EMP-1910,En attente,,,,2026-11-08 08:59:12
+APV-100,2026-10-25 09:21:38,HR_FAQ_Agent,ROUTE_LEAVE_REQUEST_TO_MANAGER,Transmettre la demande de congé de Hatem Trabelsi à son manager,Email,EML-050,Demande à valider par le manager EMP-1771.,Faible,Manager,EMP-1771,En attente,,,,2026-11-08 09:21:38
+APV-101,2026-10-25 14:19:41,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Julien Sassi (score 27/100),Application,APP-086,"Bonjour Julien,
+
+Merci pour votre candidature au poste de Développeur Full Stack Confirmé (CDD). Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1829,En attente,,,,2026-11-08 14:19:41
+APV-102,2026-10-25 17:18:31,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Omar Bouazizi (score 10/100),Application,APP-087,"Bonjour Omar,
+
+Merci pour votre candidature au poste de Data Scientist Confirmé. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,En attente,,,,2026-11-08 17:18:31
+APV-103,2026-10-26 07:45:02,HR_FAQ_Agent,ROUTE_LEAVE_REQUEST_TO_MANAGER,Transmettre la demande de congé de Salma Naceur à son manager,Email,EML-032,Demande à valider par le manager EMP-1012.,Faible,Manager,EMP-1012,Approuvé,EMP-1012,2026-10-26 15:18:02,Validé sans modification,2026-11-09 07:45:02
+APV-104,2026-10-26 09:57:39,HR_FAQ_Agent,ROUTE_LEAVE_REQUEST_TO_MANAGER,Transmettre la demande de congé de Olfa Chaabane à son manager,Email,EML-051,Demande à valider par le manager EMP-1892.,Faible,Manager,EMP-1892,En attente,,,,2026-11-09 09:57:39
+APV-105,2026-10-27 10:25:18,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Karim Jlassi,Application,APP-088,"Profil moyennement adapté (score 65/100). Manque : Comptabilité générale, Rapprochement bancaire. Décision : présélectionner ou refuser.",Faible,RH,EMP-1090,En attente,,,,2026-11-10 10:25:18
+APV-106,2026-10-28 10:16:44,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Fares Bouzid (score 39/100),Application,APP-089,"Bonjour Fares,
+
+Merci pour votre candidature au poste de Data Analyst Senior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-28 17:02:44,Validé sans modification,2026-11-11 10:16:44
+APV-107,2026-10-28 14:56:38,HR_FAQ_Agent,ESCALATE_SENSITIVE_QUESTION,Question sensible/hors périmètre : Quel est le salaire de mon collègue de l'équipe ?,Employee_Question,QST-067,Je ne peux pas répondre de façon fiable avec les documents disponibles ; la question est transmise à la RH.,Élevé,RH,EMP-1829,En attente,,,,2026-11-11 14:56:38
+APV-108,2026-10-28 16:24:15,Email_Triage_Agent,REPLY_TO_COMPLAINT,Répondre à la réclamation de Claire Mejri,Email,EML-009,"Bonjour,
+
+Nous avons bien reçu votre message concernant : ordinateur défectueux. Nous traitons votre demande en priorité et reviendrons vers vous sous 48 h.
+
+Cordialement,
+Service RH",Moyen,RH,EMP-1090,En attente,,,,2026-11-11 16:24:15
+APV-109,2026-10-29 09:25:54,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-052 (Documents manquants),Followup,FUP-052,Dossier en retard de 9 jour(s) ; 3 relances. Action : Lister les pièces manquantes et relancer le candidat.,Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-30 23:00:54,Validé sans modification,2026-11-12 09:25:54
+APV-110,2026-10-29 09:37:31,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-042 (Confirmation de créneau),Followup,FUP-042,"Dossier en retard de 12 jour(s) ; 3 relances. Action : Envoyer la confirmation avec date, heure et lien.",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-29 14:50:31,OK pour envoi,2026-11-12 09:37:31
+APV-111,2026-10-29 09:42:04,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-056 (Remboursement en attente),Followup,FUP-056,Dossier en retard de 7 jour(s) ; 3 relances. Action : Contacter la comptabilité et confirmer la date de paiement.,Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-29 20:47:04,OK pour envoi,2026-11-12 09:42:04
+APV-112,2026-10-29 09:47:30,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-016 (Shortlist demandée par un manager),Followup,FUP-016,Dossier en retard de 5 jour(s) ; 3 relances. Action : Produire une shortlist classée par score d'adéquation.,Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-29 18:06:30,OK pour envoi,2026-11-12 09:47:30
+APV-113,2026-10-29 11:23:24,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-003 (Documents manquants),Followup,FUP-003,Dossier en retard de 1 jour(s) ; 3 relances. Action : Lister les pièces manquantes et relancer le candidat.,Moyen,RH,EMP-1829,En attente,,,,2026-11-12 11:23:24
+APV-114,2026-10-29 11:45:30,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-051 (Attestation non reçue),Followup,FUP-051,Dossier en retard de 23 jour(s) ; 3 relances. Action : Vérifier l'état dans le portail RH et relancer le service concerné.,Moyen,RH,EMP-1910,Rejeté,EMP-1910,2026-10-30 19:48:30,"À reformuler, informations insuffisantes",2026-11-12 11:45:30
+APV-115,2026-10-29 13:23:21,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-062 (Shortlist demandée par un manager),Followup,FUP-062,Dossier en retard de 16 jour(s) ; 2 relances. Action : Produire une shortlist classée par score d'adéquation.,Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-31 17:09:21,Conforme à la politique RH,2026-11-12 13:23:21
+APV-116,2026-10-29 15:21:37,HR_FAQ_Agent,ESCALATE_SENSITIVE_QUESTION,Question sensible/hors périmètre : Puis-je avoir des actions de l'entreprise comme avantage ?,Employee_Question,QST-069,Je ne peux pas répondre de façon fiable avec les documents disponibles ; la question est transmise à la RH.,Élevé,RH,EMP-1910,En attente,,,,2026-11-12 15:21:37
+APV-117,2026-10-29 17:57:25,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-024 (Shortlist demandée par un manager),Followup,FUP-024,Dossier en retard de 16 jour(s) ; 2 relances. Action : Produire une shortlist classée par score d'adéquation.,Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-31 05:53:25,OK pour envoi,2026-11-12 17:57:25
+APV-118,2026-10-30 08:52:41,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Nabil Chebbi (score 27/100),Application,APP-091,"Bonjour Nabil,
+
+Merci pour votre candidature au poste de Développeur Backend Java Junior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1090,Approuvé,EMP-1090,2026-10-30 22:34:41,Conforme à la politique RH,2026-11-13 08:52:41
+APV-119,2026-10-30 09:27:46,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-033 (Validation de congé en attente),Followup,FUP-033,Dossier en retard de 1 jour(s) ; 2 relances. Action : Relancer le manager pour validation.,Moyen,RH,EMP-1910,En attente,,,,2026-11-13 09:27:46
+APV-120,2026-10-30 10:11:43,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-023 (Validation de congé en attente),Followup,FUP-023,Dossier en retard de 8 jour(s) ; 3 relances. Action : Relancer le manager pour validation.,Moyen,RH,EMP-1829,En attente,,,,2026-11-13 10:11:43
+APV-121,2026-10-30 10:24:59,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-011 (Validation de congé en attente),Followup,FUP-011,Dossier en retard de 9 jour(s) ; 3 relances. Action : Relancer le manager pour validation.,Moyen,RH,EMP-1829,Approuvé,EMP-1829,2026-10-30 17:28:59,OK pour envoi,2026-11-13 10:24:59
+APV-122,2026-10-30 11:13:56,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-029 (Validation de congé en attente),Followup,FUP-029,Dossier en retard de 22 jour(s) ; 3 relances. Action : Relancer le manager pour validation.,Moyen,RH,EMP-1910,En attente,,,,2026-11-13 11:13:56
+APV-123,2026-10-30 11:17:03,CV_Screening_Agent,HUMAN_REVIEW_PROFILE,Décision RH requise pour Claire Naceur,Application,APP-092,"Profil moyennement adapté (score 58/100). Manque : Spring Boot, SQL, Microservices. Décision : présélectionner ou refuser.",Faible,RH,EMP-1910,En attente,,,,2026-11-13 11:17:03
+APV-124,2026-10-30 11:52:06,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Sonia Triki,Application,APP-093,"Créneaux proposés : SLT-037, SLT-036, SLT-002 pour le poste Designer UI/UX Confirmé (CDD).",Faible,RH,EMP-1829,En attente,,,,2026-11-13 11:52:06
+APV-125,2026-10-30 13:41:31,Email_Triage_Agent,REPLY_TO_COMPLAINT,Répondre à la réclamation de Aymen Zouari,Email,EML-019,"Bonjour,
+
+Nous avons bien reçu votre message concernant : remboursement toujours pas reçu. Nous traitons votre demande en priorité et reviendrons vers vous sous 48 h.
+
+Cordialement,
+Service RH",Moyen,RH,EMP-1910,Approuvé,EMP-1910,2026-10-31 16:28:31,Conforme à la politique RH,2026-11-13 13:41:31
+APV-126,2026-10-30 16:09:37,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-034 (Attestation non reçue),Followup,FUP-034,Dossier en retard de 19 jour(s) ; 2 relances. Action : Vérifier l'état dans le portail RH et relancer le service concerné.,Moyen,RH,EMP-1829,En attente,,,,2026-11-13 16:09:37
+APV-127,2026-10-30 16:47:06,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-007 (Documents manquants),Followup,FUP-007,Dossier en retard de 9 jour(s) ; 2 relances. Action : Lister les pièces manquantes et relancer le candidat.,Moyen,RH,EMP-1910,En attente,,,,2026-11-13 16:47:06
+APV-128,2026-10-30 17:13:11,Scheduling_Agent,SCHEDULE_INTERVIEW,Proposer 3 créneaux à Nicolas Haddad,Application,APP-095,"Créneaux proposés : SLT-044, SLT-020, SLT-015 pour le poste Développeur Full Stack Confirmé (CDD).",Faible,RH,EMP-1090,En attente,,,,2026-11-13 17:13:11
+APV-129,2026-10-30 17:21:19,CV_Screening_Agent,SEND_REJECTION_EMAIL,Envoyer un refus à Sami Martin (score 62/100),Application,APP-094,"Bonjour Sami,
+
+Merci pour votre candidature au poste de Chef de projet IT Junior. Après examen de votre dossier, nous ne pouvons pas y donner suite pour le moment. Nous conservons votre profil pour de futures opportunités.
+
+Cordialement,
+L'équipe RH",Moyen,RH,EMP-1910,En attente,,,,2026-11-13 17:21:19
+APV-130,2026-10-31 08:44:26,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-010 (Confirmation de créneau),Followup,FUP-010,"Dossier en retard de 11 jour(s) ; 3 relances. Action : Envoyer la confirmation avec date, heure et lien.",Moyen,RH,EMP-1090,En attente,,,,2026-11-14 08:44:26
+APV-131,2026-10-31 09:40:15,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-008 (Statut de candidature),Followup,FUP-008,Dossier en retard de 3 jour(s) ; 2 relances. Action : Répondre avec le statut actuel et la prochaine étape.,Moyen,RH,EMP-1910,En attente,,,,2026-11-14 09:40:15
+APV-132,2026-10-31 10:21:42,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-013 (Statut de candidature),Followup,FUP-013,Dossier en retard de 7 jour(s) ; 2 relances. Action : Répondre avec le statut actuel et la prochaine étape.,Moyen,RH,EMP-1090,En attente,,,,2026-11-14 10:21:42
+APV-133,2026-10-31 11:19:09,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : Demande : Attestation de travail,Email,EML-059,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1910,En attente,,,,2026-11-14 11:19:09
+APV-134,2026-10-31 12:43:23,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-004 (Préparation d'entretien),Followup,FUP-004,"Dossier en retard de 5 jour(s) ; 3 relances. Action : Envoyer au candidat les détails de l'entretien (format, durée, interlocuteurs).",Moyen,RH,EMP-1090,En attente,,,,2026-11-14 12:43:23
+APV-135,2026-10-31 12:46:07,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-019 (Attestation non reçue),Followup,FUP-019,Dossier en retard de 27 jour(s) ; 2 relances. Action : Vérifier l'état dans le portail RH et relancer le service concerné.,Moyen,RH,EMP-1829,En attente,,,,2026-11-14 12:46:07
+APV-136,2026-10-31 14:06:39,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-068 (Attestation non reçue),Followup,FUP-068,Dossier en retard de 16 jour(s) ; 2 relances. Action : Vérifier l'état dans le portail RH et relancer le service concerné.,Moyen,RH,EMP-1090,En attente,,,,2026-11-14 14:06:39
+APV-137,2026-10-31 14:12:34,HR_FAQ_Agent,ISSUE_ATTESTATION,Émettre : Attestation de stage,Email,EML-072,Génération du document à partir des données employé ; signature RH requise.,Moyen,RH,EMP-1829,En attente,,,,2026-11-14 14:12:34
+APV-138,2026-10-31 14:16:42,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-037 (Validation de congé en attente),Followup,FUP-037,Dossier en retard de 12 jour(s) ; 3 relances. Action : Relancer le manager pour validation.,Moyen,RH,EMP-1910,En attente,,,,2026-11-14 14:16:42
+APV-139,2026-10-31 17:00:00,Followup_Agent,ESCALATE_OVERDUE_FOLLOWUP,Escalader le suivi en retard FUP-047 (Shortlist demandée par un manager),Followup,FUP-047,Dossier en retard de 19 jour(s) ; 3 relances. Action : Produire une shortlist classée par score d'adéquation.,Moyen,RH,EMP-1090,En attente,,,,2026-11-14 17:00:00

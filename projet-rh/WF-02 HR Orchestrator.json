@@ -1,0 +1,131 @@
+{
+  "name": "WF-02 HR Orchestrator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "hr-assistant",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        16
+      ],
+      "id": "e2c3984b-8922-4407-a749-2eae148ab72e",
+      "name": "Webhook",
+      "webhookId": "b2578c30-ad34-45f5-8c62-7cba1958d880"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "nEt8DrQu2PMnFmOn",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/nEt8DrQu2PMnFmOn",
+          "cachedResultName": "WF-01 Email and Application Analysis"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.4,
+      "position": [
+        416,
+        16
+      ],
+      "id": "c66ebe38-31d7-446b-8ca1-771217f98cb1",
+      "name": "Call 'WF-01 Email and Application Analysis'"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        656,
+        16
+      ],
+      "id": "8b23ef8f-a6a0-4a11-a551-198685b2f972",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body }}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        144,
+        16
+      ],
+      "id": "9999833e-eb93-4b57-b898-b7a87221bec6",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "Call 'WF-01 Email and Application Analysis'": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Call 'WF-01 Email and Application Analysis'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "15a2d5bb-1f4c-4236-9e5f-9b47d150fd6e",
+  "meta": {
+    "instanceId": "4fd35af40aefc8c058b49bc461570f36cbdf69261ae38a234469ae1ce8af1e95"
+  },
+  "nodeGroups": [],
+  "id": "65RTdrBUe1m75LdS",
+  "tags": []
+}
